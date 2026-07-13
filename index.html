@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dummy 13 — Nitinol Walker Build Blueprint</title>
+<style>
+  :root{
+    --bg:#0a0f1a; --panel:#101727; --panel2:#0c1322; --line:#22304a;
+    --ink:#e8eef7; --dim:#93a2bd; --blue:#96cdff; --blue2:#5aa0e6;
+    --crit:#ff4d3d; --high:#ff8a1f; --med:#ffb454; --light:#96c8ff;
+    --good:#5fd39a; --link:#8ab8ff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+  code{background:#16203400;background:#172234;padding:.12em .42em;border-radius:4px;font-size:.86em;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;color:#bfe0ff}
+  h1,h2,h3{line-height:1.2;font-weight:700}
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,15,26,.88);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{max-width:1180px;margin:0 auto;padding:11px 22px;display:flex;
+    gap:17px;align-items:center;flex-wrap:wrap}
+  nav .brand{font-weight:800;letter-spacing:.4px;color:var(--blue)}
+  nav a{color:var(--dim);font-size:13px;font-weight:600}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  section{padding:54px 0;border-bottom:1px solid var(--line)}
+  .lead{color:var(--dim);font-size:18px;max-width:780px}
+  .eyebrow{color:var(--blue2);font-weight:700;letter-spacing:1.8px;
+    text-transform:uppercase;font-size:12px;margin-bottom:10px}
+  h2.sec{font-size:30px;margin:.1em 0 .35em}
+  header.hero{padding:64px 0 50px;background:
+    radial-gradient(1000px 460px at 80% -10%,rgba(90,160,230,.18),transparent 60%),
+    radial-gradient(700px 380px at 6% 120%,rgba(95,211,154,.07),transparent 60%);}
+  .hero .wrap{display:grid;grid-template-columns:1.2fr .85fr;gap:34px;align-items:center}
+  .hero h1{font-size:44px;margin:.1em 0 .25em}
+  .hero h1 span{color:var(--blue)}
+  .hero img{width:100%;border-radius:14px;border:1px solid var(--line);
+    background:#070b12;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+  .pill{display:inline-block;background:#142036;border:1px solid var(--line);
+    color:var(--blue);padding:5px 12px;border-radius:999px;font-size:12.5px;
+    font-weight:600;margin:0 6px 6px 0}
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .card h3{margin:.1em 0 .4em;font-size:17px}
+  .card.kpi .num{font-size:30px;font-weight:800;color:var(--blue)}
+  .card.kpi .lbl{color:var(--dim);font-size:13.5px}
+  .bp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+  .bp figure{margin:0;background:var(--panel2);border:1px solid var(--line);
+    border-radius:12px;padding:10px}
+  .bp img,figure.solo img{width:100%;display:block;border-radius:8px}
+  figure.solo{margin:18px 0;background:var(--panel2);border:1px solid var(--line);
+    border-radius:12px;padding:12px}
+  figcaption{color:var(--dim);font-size:13px;margin-top:9px;text-align:center}
+  .legend-row{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0 0}
+  .lg{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--dim)}
+  .sw{width:26px;height:6px;border-radius:3px;display:inline-block}
+  .step{display:grid;grid-template-columns:52px 1fr;gap:20px;margin:24px 0;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+  .step .no{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+    font-weight:800;font-size:18px;color:#06101f;background:linear-gradient(145deg,var(--blue),var(--blue2))}
+  .step h3{margin:.05em 0 .5em;font-size:21px}
+  .step h4{margin:1.1em 0 .3em;color:var(--blue);font-size:14px;letter-spacing:.4px;text-transform:uppercase}
+  ul.tight{margin:.4em 0;padding-left:1.2em} ul.tight li{margin:.32em 0}
+  table{width:100%;border-collapse:collapse;margin:.6em 0;font-size:14px}
+  th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--blue);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  tbody tr:hover{background:#121b2c}
+  td.r,th.r{text-align:right}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:11.5px;font-weight:700;letter-spacing:.3px}
+  .t-crit{background:rgba(255,77,61,.16);color:#ff7a6e;border:1px solid rgba(255,77,61,.4)}
+  .t-high{background:rgba(255,138,31,.16);color:#ffac5e;border:1px solid rgba(255,138,31,.4)}
+  .t-med{background:rgba(255,180,84,.15);color:#ffc578;border:1px solid rgba(255,180,84,.38)}
+  .t-light{background:rgba(150,200,255,.14);color:#a9d4ff;border:1px solid rgba(150,200,255,.36)}
+  .ch{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12.5px;color:#bfe0ff;white-space:nowrap}
+  .note{border-left:3px solid var(--blue2);background:#0e1828;padding:14px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .warn{border-left:3px solid var(--crit);background:#1c1210;padding:14px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .ok{border-left:3px solid var(--good);background:#0e1c16;padding:14px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .note b,.warn b,.ok b{color:var(--ink)}
+  pre{background:#070c15;border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+    overflow:auto;font-size:13.5px;line-height:1.55;font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre .c{color:#6b86a8}
+  footer{padding:40px 0 70px;color:var(--dim);font-size:14px}
+  @media(max-width:880px){
+    .hero .wrap,.bp,.g3,.g2{grid-template-columns:1fr}
+    .hero h1{font-size:33px} nav .hideable{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="brand">DUMMY&nbsp;13 · BLUEPRINT</span>
+  <a href="#blueprint">Blueprint</a>
+  <a href="#anchor">Anchoring</a>
+  <a href="#channels">Wiring map</a>
+  <a href="#bom" class="hideable">Parts</a>
+  <a href="#build">Assembly</a>
+  <a href="#power" class="hideable">Power</a>
+  <a href="#brain">Brain</a>
+  <a href="#caveats">Reality check</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Model-accurate construction blueprint</div>
+    <h1>Build <span>Dummy&nbsp;13</span>:<br>where every muscle goes</h1>
+    <p class="lead">An 8-inch (20&nbsp;cm), ~70-gram printed humanoid that walks on
+      <b>nitinol shape-memory muscle</b> — the wire <i>is</i> the joint. This is the
+      placement blueprint: every one of the 17 powered joints, both wires of each antagonist
+      pair, where to anchor them, and which driver channel each lead plugs into — taken
+      straight from the simulated model that learned to walk.</p>
+    <div style="margin-top:18px">
+      <span class="pill">17 joints · 34 wires</span>
+      <span class="pill">0.2 mm Flexinol</span>
+      <span class="pill">model-accurate positions</span>
+      <span class="pill">walks ~2 m</span>
+    </div>
+  </div>
+  <img src="img/hero.png" alt="Dummy 13 nitinol robot standing">
+</div></header>
+
+<!-- BLUEPRINT -->
+<section id="blueprint"><div class="wrap">
+  <div class="eyebrow">The placement blueprint</div>
+  <h2 class="sec">Where every muscle goes</h2>
+  <p class="lead">Each dot is a real joint position from the model. Across every joint sits an
+    <b>antagonist pair</b> of 0.2&nbsp;mm nitinol wires (the two coloured lines), offset to
+    either side at the joint's moment arm. Colour = how much work that joint does in the walk,
+    so you know where to spend your best wire and anchoring effort.</p>
+
+  <div class="legend-row">
+    <span class="lg"><span class="sw" style="background:#ff4d3d"></span> CRITICAL — hips (weight-shift &amp; step)</span>
+    <span class="lg"><span class="sw" style="background:#ff8a1f"></span> HIGH — spine lean</span>
+    <span class="lg"><span class="sw" style="background:#ffb454"></span> MEDIUM — knees, shoulders</span>
+    <span class="lg"><span class="sw" style="background:#96c8ff"></span> LIGHT — ankles, elbows</span>
+  </div>
+
+  <div class="bp" style="margin-top:18px">
+    <figure>
+      <img src="img/blueprint-front.png" alt="Front elevation muscle map">
+      <figcaption><b>FRONT</b> — roll &amp; weight-shift axes (both legs/arms visible)</figcaption>
+    </figure>
+    <figure>
+      <img src="img/blueprint-side.png" alt="Side elevation muscle map">
+      <figcaption><b>SIDE</b> — pitch, knee, spine &amp; elbow (left/right overlap)</figcaption>
+    </figure>
+  </div>
+
+  <div class="note"><b>How to read it.</b> The two wires on each joint are the
+    <i>same</i> muscle pair seen from two angles — front shows the roll/side-to-side wires
+    spread apart, side shows the pitch/fore-aft wires spread apart. The green callout on the
+    side view marks the <b>wire-harness exit</b> at the lower back, where all 34 leads gather
+    and run to the driver board. Build to these positions and the gait the policy learned will
+    transfer.</div>
+</div></section>
+
+<!-- ANCHOR DETAIL -->
+<section id="anchor"><div class="wrap">
+  <div class="eyebrow">How each muscle mounts</div>
+  <h2 class="sec">Anchoring one joint</h2>
+  <p class="lead">Every joint is built the same way. Two pre-shaped wires, one per side,
+    each crimped to the limb above and the limb below. This is the detail behind every dot in
+    the blueprint.</p>
+
+  <figure class="solo">
+    <img src="img/joint-detail.png" alt="Single joint anchoring schematic">
+    <figcaption>One joint, both wires. Heat the flexed wire and the joint closes; heat the
+      extended wire and it opens; warm both and it holds an angle in between.</figcaption>
+  </figure>
+
+  <div class="grid g3" style="margin-top:6px">
+    <div class="card"><h3>① Anchor up &amp; down</h3>
+      <p style="color:var(--dim);margin:.3em 0">Crimp each wire to the parent limb ~48% up and
+        the child limb ~48% down. The crimp is both the mechanical anchor and the electrical
+        terminal (nitinol won't solder).</p></div>
+    <div class="card"><h3>② Far from the pivot</h3>
+      <p style="color:var(--dim);margin:.3em 0">Torque = force × <b>moment arm</b>. Anchor as
+        far from the pivot as the frame allows (~10–13&nbsp;mm). That's what turns a 5.6&nbsp;N
+        wire into enough torque to move a hip.</p></div>
+    <div class="card"><h3>③ One wire per side</h3>
+      <p style="color:var(--dim);margin:.3em 0">The antagonists sit on opposite faces of the
+        joint, kept apart with Kapton/ceramic so they never short. Together they push and pull
+        the joint through its whole range.</p></div>
+  </div>
+
+  <div class="warn"><b>Direction matters.</b> Shape-set so knees flex <i>backward</i> and elbows
+    flex <i>forward</i> only — a real Dummy&nbsp;13 ball-socket can't hyperextend, and neither can
+    the policy's gait. Joint travel targets are in <a href="#build">Assembly&nbsp;Step&nbsp;1</a>.</div>
+</div></section>
+
+<!-- WIRING CHANNEL MAP -->
+<section id="channels"><div class="wrap">
+  <div class="eyebrow">Wiring map</div>
+  <h2 class="sec">34 wires → 34 driver channels</h2>
+  <p class="lead">Each joint needs two MOSFET channels — one per wire. The channel order below
+    <b>matches the policy's output order exactly</b>, so output <code>act[i]</code> drives joint
+    row <code>i</code>: positive heats its <span style="color:#ff7a6e">flexed</span> channel,
+    negative heats its <span style="color:#a9d4ff">extended</span> channel. Wire your harness in
+    this order and the firmware mapping is trivial.</p>
+
+  <table>
+    <thead><tr>
+      <th>#</th><th>Joint</th>
+      <th>Flexed wire</th><th>Extended wire</th>
+      <th>Priority</th><th>Build note</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>0</td><td>Hip pitch L</td><td class="ch">CH 1</td><td class="ch">CH 2</td><td><span class="tag t-crit">CRITICAL</span></td><td>step length — heavy load</td></tr>
+      <tr><td>1</td><td>Hip roll L</td><td class="ch">CH 3</td><td class="ch">CH 4</td><td><span class="tag t-crit">CRITICAL</span></td><td>weight-shift — strongest</td></tr>
+      <tr><td>2</td><td>Knee L</td><td class="ch">CH 5</td><td class="ch">CH 6</td><td><span class="tag t-med">MEDIUM</span></td><td>lift swing foot</td></tr>
+      <tr><td>3</td><td>Ankle pitch L</td><td class="ch">CH 7</td><td class="ch">CH 8</td><td><span class="tag t-light">LIGHT</span></td><td>keep foot flat</td></tr>
+      <tr><td>4</td><td>Ankle roll L</td><td class="ch">CH 9</td><td class="ch">CH 10</td><td><span class="tag t-light">LIGHT</span></td><td>lateral trim</td></tr>
+      <tr><td>5</td><td>Hip pitch R</td><td class="ch">CH 11</td><td class="ch">CH 12</td><td><span class="tag t-crit">CRITICAL</span></td><td>step length — heavy load</td></tr>
+      <tr><td>6</td><td>Hip roll R</td><td class="ch">CH 13</td><td class="ch">CH 14</td><td><span class="tag t-crit">CRITICAL</span></td><td>weight-shift — strongest</td></tr>
+      <tr><td>7</td><td>Knee R</td><td class="ch">CH 15</td><td class="ch">CH 16</td><td><span class="tag t-med">MEDIUM</span></td><td>lift swing foot</td></tr>
+      <tr><td>8</td><td>Ankle pitch R</td><td class="ch">CH 17</td><td class="ch">CH 18</td><td><span class="tag t-light">LIGHT</span></td><td>keep foot flat</td></tr>
+      <tr><td>9</td><td>Ankle roll R</td><td class="ch">CH 19</td><td class="ch">CH 20</td><td><span class="tag t-light">LIGHT</span></td><td>lateral trim</td></tr>
+      <tr><td>10</td><td>Spine pitch</td><td class="ch">CH 21</td><td class="ch">CH 22</td><td><span class="tag t-high">HIGH</span></td><td>torso lean — give it power</td></tr>
+      <tr><td>11</td><td>Shoulder pitch L</td><td class="ch">CH 23</td><td class="ch">CH 24</td><td><span class="tag t-med">MEDIUM</span></td><td>counter-balance</td></tr>
+      <tr><td>12</td><td>Shoulder roll L</td><td class="ch">CH 25</td><td class="ch">CH 26</td><td><span class="tag t-med">MEDIUM</span></td><td>counter-balance</td></tr>
+      <tr><td>13</td><td>Elbow L</td><td class="ch">CH 27</td><td class="ch">CH 28</td><td><span class="tag t-light">LIGHT</span></td><td>nearly idle — thin wire ok</td></tr>
+      <tr><td>14</td><td>Shoulder pitch R</td><td class="ch">CH 29</td><td class="ch">CH 30</td><td><span class="tag t-med">MEDIUM</span></td><td>counter-balance</td></tr>
+      <tr><td>15</td><td>Shoulder roll R</td><td class="ch">CH 31</td><td class="ch">CH 32</td><td><span class="tag t-med">MEDIUM</span></td><td>counter-balance</td></tr>
+      <tr><td>16</td><td>Elbow R</td><td class="ch">CH 33</td><td class="ch">CH 34</td><td><span class="tag t-light">LIGHT</span></td><td>nearly idle — thin wire ok</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>Minimum viable build:</b> if 34 channels is too many for v1, you can drop
+    the elbows (CH 27–28, 33–34) and even the ankles entirely — the policy barely uses them.
+    Never skip the hips or spine.</div>
+</div></section>
+
+<!-- BOM -->
+<section id="bom"><div class="wrap">
+  <div class="eyebrow">Bill of materials</div>
+  <h2 class="sec">What to buy</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Structure</h3>
+      <table>
+        <tr><th>Item</th><th>Notes</th></tr>
+        <tr><td>Dummy 13 frame + armor</td><td>soozafone's files (CC-BY), PLA/PETG. <b>Lengthen the feet</b> (Step 1).</td></tr>
+        <tr><td>Filament</td><td>~150 g; PETG near wires for heat tolerance</td></tr>
+        <tr><td>Pins / elastic cord</td><td>for the ball-socket joints per the original design</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Muscle</h3>
+      <table>
+        <tr><th>Item</th><th>Notes</th></tr>
+        <tr><td><b>0.2 mm Flexinol</b></td><td>~5.6 N pull; ~3–4 m total for 34 wires + spares</td></tr>
+        <tr><td>Micro crimp ferrules</td><td>~70 — terminate &amp; wire each end (no soldering)</td></tr>
+        <tr><td>Kapton / ceramic beads</td><td>insulate the antagonist crossings</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Electronics</h3>
+      <table>
+        <tr><th>Item</th><th>Notes</th></tr>
+        <tr><td><b>XIAO ESP32-S3 Sense</b></td><td>brain + driver in one (~3 g). Runs the policy on-board, dual-core; OV2640 camera = future vision</td></tr>
+        <tr><td>PCA9685 ×3</td><td>I²C 16-ch PWM expanders → 48 gate channels (the XIAO has too few GPIO for 34)</td></tr>
+        <tr><td>IMU (e.g. MPU-6050)</td><td>torso orientation, on the same I²C bus</td></tr>
+        <tr><td>Logic-level MOSFETs ×34</td><td>≥3 A, V<sub>GS(th)</sub>&lt;2.5 V (e.g. AO3400); one per wire</td></tr>
+        <tr><td>Gate 100 Ω + pulldown 10 kΩ</td><td>per channel — off = cold = safe</td></tr>
+        <tr><td>Buck converter</td><td>battery → 3.3–5 V muscle rail</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Power &amp; cooling</h3>
+      <table>
+        <tr><th>Item</th><th>Notes</th></tr>
+        <tr><td>2S LiPo, high-C</td><td>500–1000 mAh; muscle current is peaky</td></tr>
+        <tr><td>Blower / fan ×1–2</td><td>sets cool-down → sets gait speed. Not optional.</td></tr>
+        <tr><td>Current sense (opt.)</td><td>watchdog a muscle that's held on too long</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="note"><b>v1: keep the heavy bits off-board.</b> The robot is ~70 g. The XIAO itself
+    is only ~3 g and could ride on the torso, but the LiPo, buck and fan should stay off-board for
+    v1 — only the thin 34-lead harness runs to the muscles. The tiny brain is what makes going
+    fully self-contained realistic <i>later</i>.</div>
+</div></section>
+
+<!-- ASSEMBLY -->
+<section id="build"><div class="wrap">
+  <div class="eyebrow">Assembly</div>
+  <h2 class="sec">Build it, step by step</h2>
+
+  <div class="step"><div class="no">1</div><div>
+    <h3>Print the frame — and lengthen the feet</h3>
+    <p>Print soozafone's Dummy&nbsp;13 as designed, with one change the sim proved is decisive.</p>
+    <h4>The foot modification (don't skip)</h4>
+    <p>Walking distance is set by <b>foot length, front-to-back</b> — not width. The stock foot
+      (~1.8 cm wide × <b>1.8 cm long</b>) <span style="color:#ff7a6e">fails</span>: it tips within a
+      second. Extending to <b>~2.5 cm long</b> (a small toe + heel) unlocked the full ~2 m walk.</p>
+    <ul class="tight">
+      <li><b>Target sole:</b> ~1.8 cm wide × <b>~2.5 cm long</b> — flat, rigid plates glued/screwed
+        under the stock feet, or edit the foot STL.</li>
+    </ul>
+    <h4>Realistic joint travel</h4>
+    <table>
+      <tr><th>Joint</th><th>Travel</th><th>Joint</th><th>Travel</th></tr>
+      <tr><td>Hip pitch</td><td>−55…+65°</td><td>Knee</td><td>−120…0° (back only)</td></tr>
+      <tr><td>Hip roll</td><td>−35…+35°</td><td>Elbow</td><td>0…+120° (forward only)</td></tr>
+      <tr><td>Shoulder pitch</td><td>−65…+55°</td><td>Ankle pitch</td><td>−45…+25°</td></tr>
+      <tr><td>Shoulder roll</td><td>−35…+35°</td><td>Ankle roll</td><td>−20…+20°</td></tr>
+      <tr><td>Spine pitch</td><td>−15…+40°</td><td colspan="2"></td></tr>
+    </table>
+  </div></div>
+
+  <div class="step"><div class="no">2</div><div>
+    <h3>Shape-set the 34 wires</h3>
+    <p>Out of the bag nitinol remembers being straight. You re-teach each wire its shape by
+      holding it in the target pose and heat-treating — this is what makes the wire <i>be</i> the
+      joint. Per the wiring map, you'll set <b>two shapes per joint</b>: one to the flexed limit,
+      one to the extended limit.</p>
+    <ul class="tight">
+      <li>Constrain the wire on a steel/ceramic jig in the target shape.</li>
+      <li><b>~450–500 °C for ~5–15 min</b>, then <b>water-quench</b>.</li>
+      <li>Label every wire — 34 identical-looking wires is a recipe for confusion.</li>
+    </ul>
+    <div class="warn"><b>Safety:</b> 450–500 °C + quenching — ventilate, eye protection, heat
+      gloves, and dial in time/temp on scrap wire first.</div>
+  </div></div>
+
+  <div class="step"><div class="no">3</div><div>
+    <h3>Mount the muscles to the blueprint</h3>
+    <p>Work joint by joint, following the <a href="#blueprint">front/side blueprint</a> for
+      position and the <a href="#anchor">anchor detail</a> for method. For each joint:</p>
+    <ul class="tight">
+      <li>Crimp the <b>flexed</b> wire on one face, the <b>extended</b> wire on the other,
+        ~48% up the parent limb and ~48% down the child limb.</li>
+      <li>Keep the moment arm as long as the frame allows (~10–13 mm).</li>
+      <li>Run each wire's two leads back toward the <b>lower-back harness point</b> (green callout
+        on the side blueprint).</li>
+      <li>Spend your best wires &amp; anchoring on the <span style="color:#ff7a6e">red</span> hips
+        and <span style="color:#ffac5e">orange</span> spine; the
+        <span style="color:#a9d4ff">light-blue</span> ankles and elbows can be minimal.</li>
+    </ul>
+  </div></div>
+
+  <div class="step"><div class="no">4</div><div>
+    <h3>Wire the harness &amp; driver board</h3>
+    <p>Land all 34 leads on the driver board in the <a href="#channels">channel-map order</a>.
+      The XIAO streams duty values over I²C to the PCA9685 expanders; each PCA9685 output drives
+      one low-side MOSFET, one MOSFET per wire:</p>
+    <pre>XIAO ESP32-S3 ──I²C──► PCA9685 ×3 ──PWM──► 34 MOSFET gates
+
+muscle_rail (+) ──[ nitinol wire ]──┬── MOSFET drain
+                                    │
+PCA9685 PWM ──[100Ω]── gate         source ── GND
+                       └──[10kΩ]── GND   <span class="c"># pulldown: off = cold = safe</span></pre>
+    <ul class="tight">
+      <li>Pick the rail voltage so a full-on segment pulls ≈<b>0.6–1 A</b> (0.2 mm Flexinol is
+        ~29 Ω/m, so short muscles are sub-ohm) — usually a <b>3.3–5 V</b> buck rail.</li>
+      <li>Tune heat with <b>PWM duty</b>, not by starving current: fast heat, then a low holding duty.</li>
+    </ul>
+    <h4>Route the leads — they're part of the mechanism</h4>
+    <p>The wire <i>is</i> the heater, so every muscle's two crimps are also its two terminals: that's
+      <b>68 conductors</b> running along the limbs back to the lower-back harness. They aren't free —
+      they add mass, and any wire crossing a joint fights that joint's slow muscle. Route them so they
+      cost as little as possible:</p>
+    <ul class="tight">
+      <li><b>Cross joints on the neutral axis.</b> Run each lead through/near the pivot so flexing the
+        joint barely changes the lead's length — off-axis routing turns the bundle into a spring the
+        muscle has to overcome.</li>
+      <li><b>Leave a service loop at every joint.</b> A small slack loop lets the joint reach its full
+        range without the lead going taut or tugging the crimp loose.</li>
+      <li><b>Bundle proximally, fan out distally.</b> Leads gather as they head inboard, so proximal
+        joints (hips, shoulders) carry the most wire — give those the cleanest, lowest-drag paths.</li>
+      <li><b>Use fine, flexible lead wire</b> (e.g. 30–34 AWG silicone) and strain-relieve at the
+        torso so motion never pulls on a muscle crimp.</li>
+    </ul>
+    <div class="note"><b>This is in the sim now.</b> The obstacle/climb model adds the harness as
+      ~3.5 g at the lower back plus extra passive damping at each joint (more on the arms, whose leads
+      reach farthest) — so the policy trains against the real, tethered body rather than free-floating
+      muscles.</div>
+  </div></div>
+
+  <div class="step"><div class="no">5</div><div>
+    <h3>Walk it</h3>
+    <p>Load the trained policy (next section), start it on a test stand with the fan running,
+      then on the floor. Expect to tune the two joints that dominate — <b>hip roll</b>
+      (weight-shift amplitude) and <b>hip pitch</b> (step length) — first.</p>
+    <p style="color:var(--dim)">The gait is a deliberate <b>static</b> one: wide stance → shift
+      weight fully over one foot → lift &amp; swing the other → plant → shift back. Slow is correct;
+      the cadence is capped by how fast the wires cool.</p>
+  </div></div>
+</div></section>
+
+<!-- POWER / PLACEMENT -->
+<section id="power"><div class="wrap">
+  <div class="eyebrow">Off-board placement &amp; power</div>
+  <h2 class="sec">Where the electronics live</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3>The harness point</h3>
+      <p style="color:var(--dim)">All 34 leads gather at the <b>lower back / pelvis</b> (the green
+        callout on the side blueprint) and leave as a single thin ribbon. That keeps wire mass
+        centered and low, and gives one clean tether exit.</p>
+    </div>
+    <div class="card">
+      <h3>Off the robot (v1)</h3>
+      <p style="color:var(--dim)">The PCA9685 driver board, buck, LiPo and fan sit <b>beside the
+        robot</b>. The ~3 g XIAO can ride on the torso or stay off-board too. The ribbon and a fan
+        hose are the only things attached — get it walking like this before chasing a backpack.</p>
+    </div>
+    <div class="card">
+      <h3>The umbilical (esp. for climbing)</h3>
+      <p style="color:var(--dim)">That ribbon + fan hose is a real tether. For flat walking, dress it
+        out the <b>back</b> so it trails behind. For the <b>climbing</b> tasks it matters more: a cord
+        dangling in front will snag the very ledge it's climbing — suspend it from <b>above</b> (a light
+        boom over the rig) so it stays slack and out of the workspace, or move power on-board first.</p>
+    </div>
+  </div>
+  <div class="warn"><b>Two things will bite you:</b>
+    <ul class="tight" style="margin-bottom:0">
+      <li><b>Holding costs power.</b> Unlike a servo, a nitinol joint only resists load while hot —
+        standing still keeps wires warm continuously. Size the battery for the worst-case
+        <i>simultaneous</i> draw (a weight-shift lights up both hips + spine at once), not the average.</li>
+      <li><b>No airflow, no walking.</b> Without the fan the 0.8 s cool-down stretches past 3 s and
+        the gait stalls. The fan is an actuator, not a comfort feature.</li>
+    </ul></div>
+</div></section>
+
+<!-- BRAIN -->
+<section id="brain"><div class="wrap">
+  <div class="eyebrow">The brain</div>
+  <h2 class="sec">Run the policy on the XIAO ESP32-S3</h2>
+  <p class="lead">The walk is a neural-network policy (PPO) trained in simulation — not hand-coded.
+    It reads the robot's pose and outputs, per joint, how hot to make each wire. It's a tiny MLP,
+    so it runs comfortably <b>on-board the XIAO</b> — no Pi required. Use the dual cores: pin the
+    deterministic 50 Hz control loop to one, leave the other for sensing (and, later, vision).</p>
+  <pre><span class="c"># CORE 0 — control loop (~50 Hz, deterministic)</span>
+while walking:
+    obs = read_state()              <span class="c"># IMU + joint feedback + each wire's heat estimate</span>
+    act = policy(obs)               <span class="c"># 17 values in [-1,+1] — TFLite-Micro / ESP-NN</span>
+    for i, a in enumerate(act):
+        duty[flexed_ch[i]]   = clamp(+a)   <span class="c"># +a heats the FLEXED channel</span>
+        duty[extended_ch[i]] = clamp(-a)   <span class="c"># -a heats the EXTENDED channel</span>
+    i2c_write(pca9685, duty)        <span class="c"># 34 channels over I²C — a few hundred bytes</span>
+    sleep(0.02)</pre>
+  <ul class="tight">
+    <li><b>Fits easily:</b> the policy is ~60→17 with small hidden layers — microseconds on the
+      ESP32-S3 (8 MB PSRAM, vector ops). Run it with TFLite-Micro / ESP-NN, or hand-rolled matmuls.</li>
+    <li><b>Heat estimate (no sensors):</b> run the same thermal model the sim used — heat fast
+      (τ≈0.15 s), cool slow (τ≈0.8 s) — to estimate each wire's state from its duty history.</li>
+    <li><b>Pose:</b> the torso IMU + (optional) joint feedback feed <code>read_state()</code>.
+      Start open-loop with the feedforward gait, add feedback if it drifts.</li>
+    <li><b>Get the model:</b> it lives at <code>mujoco/models/dummy13_sma_far_plates.zip</code>.
+      Export to ONNX → convert to a TFLite-Micro flatbuffer for the XIAO.</li>
+  </ul>
+  <div class="note"><b>The camera is for later — today the walker is blind.</b> The OV2640 on the
+    "Sense" opens a real path to vision (obstacle avoidance, walking toward a target), but the
+    current policy is purely proprioceptive — it never uses an image. Adding sight means training a
+    <i>new</i> vision policy (or a higher-level "where to go" controller that hands setpoints to
+    this walker), running on the second core. Great to have the hardware in place; it just won't
+    improve walking until there's a vision policy to use it.</div>
+  <pre><span class="c"># watch exactly what the policy commands first (on a desktop):</span>
+cd mujoco && mjpython play.py --sma     <span class="c"># red wires = heating, grey = cool</span></pre>
+</div></section>
+
+<!-- CAVEATS -->
+<section id="caveats"><div class="wrap">
+  <div class="eyebrow">Reality check</div>
+  <h2 class="sec">What's proven, and what isn't</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="color:var(--good)">✓ Grounded in the sim</h3>
+      <ul class="tight" style="color:var(--dim)">
+        <li>Joint <b>positions &amp; ranges</b> (from the real STL parts) — the blueprint coordinates.</li>
+        <li><b>Foot length is decisive</b> — stock fails, ~2.5 cm works (tested across many sizes).</li>
+        <li>The <b>muscle budget</b> — hips/spine dominate, ankles/elbows barely used.</li>
+        <li>The <b>static gait</b>, and that a fan (not faster wire) is the fix for the slow cadence.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--med)">⚠ You'll find out on hardware</h3>
+      <ul class="tight" style="color:var(--dim)">
+        <li>Your exact <b>shape-set recipe</b> (time/temp/quench for your wire &amp; kiln).</li>
+        <li>Real <b>friction &amp; slop</b> in printed ball-sockets vs. the idealized sim.</li>
+        <li><b>Thermal cross-talk</b> between closely-routed wires.</li>
+        <li><b>Robustness:</b> even in sim only ~4 of 14 starts walk the full distance — expect to
+          babysit launches and iterate on the hip tuning.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ok" style="margin-top:18px"><b>You already have the hard part.</b> The body, the
+    joint limits, the exact muscle placement, the wiring order, the gait, and a trained controller
+    all exist. The build is faithfully reproducing this blueprint in PLA and metal — and the sim
+    has already told you which details actually decide whether it walks.</div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>Dummy 13</b> figure © soozafone, licensed CC-BY. Blueprint coordinates, muscle model, gait
+    and trained policy from the <code>ROBOT_EXPERIMENT</code> simulation. Build safe — high
+    temperatures, LiPo batteries and multi-amp currents are all in play.</p>
+  <p style="color:#536084">Front/side maps generated by projecting the live MuJoCo model · joint
+    positions are model-accurate</p>
+</div></footer>
+
+</body>
+</html>
