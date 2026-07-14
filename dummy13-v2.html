@@ -121,6 +121,34 @@ footer{margin-top:72px;padding-top:16px;border-top:3px solid var(--ink);
   </div>
 </header>
 
+<section id="stop">
+<div class="callout" style="border-left-color:#C0392B">
+<b style="color:#C0392B">Do not print or buy from this page yet — the mechanical design is unresolved</b><br>
+Audited 2026-07-14 (<span class="mono">mujoco/_audit_servo_fit.py</span>): the simulation is
+dynamically honest — every servo's <i>mass</i> and <i>torque</i> is applied at the correct
+joint, and the trained policies are valid <i>for the robot as simulated</i>. But the model
+was never checked for <b>buildability</b>, and it does not survive that check:
+<ul>
+<li><b>The servos have no mounting position.</b> Hip pitch, hip roll and hip yaw sit at the
+<i>identical</i> coordinate; so do the two ankle servos and the two shoulder servos.
+<b>106 servo pairs physically intersect.</b> In simulation this is invisible (the hardware
+geoms are set not to collide); in reality you cannot mount three servos in one cubic
+centimetre.</li>
+<li><b>An MG90S does not fit inside any leg part at this size.</b> At the modelled 20&nbsp;cm
+the thigh is 13&nbsp;mm wide, the shin 12.9&nbsp;mm, the hip base 7.9&nbsp;mm — the servo is
+22.8 × 12.2 × 22.5&nbsp;mm. Only the chest and abdomen could hold one.</li>
+<li><b>The STLs are the stock Dummy&nbsp;13 action figure</b> — friction ball joints, no servo
+bays, no brackets, no mounting provision at all.</li>
+</ul>
+Scaling the print up to the native 13-inch (33&nbsp;cm) size fixes the thigh and foot but not
+the shin or hip base, and it takes the robot to ≈446&nbsp;g needing roughly <b>2× the
+torque</b> — past what an MG90S delivers. The frame needs to be redesigned around the
+servos (or the servos become the structure), and the simulation model rebuilt from that
+geometry. <b>Everything below this line is correct about the brain and wrong about the
+body.</b>
+</div>
+</section>
+
 <section id="skills">
 <h2><span class="step">00</span> What it can do</h2>
 <p>Every clip below is a <b>real rollout of the actual trained policy</b> in the verified
