@@ -1,3 +1,5 @@
+/* SUPERSEDED: hole positions here were hand-typed. Use dummy13_v3_generated.scad,
+   whose plates + holes are COMPUTED from the audited simulation model. */
 /* DUMMY 13 V3 — every printed part, parametric, with screw holes.
  *
  * These dimensions are THE SAME CONSTANTS as mujoco/_make_v3.py (the audited simulation
