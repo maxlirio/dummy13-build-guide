@@ -115,7 +115,7 @@ footer{margin-top:72px;padding-top:16px;border-top:3px solid var(--ink);
   <div class="stats">
     <div><b>19</b><span>servos (incl. 2 hip-yaw)</span></div>
     <div><b>400 g · 32 cm</b><span>V3 bracket construction</span></div>
-    <div><b>≈$130</b><span>parts total (brackets are printed)</span></div>
+    <div><b>≈$147</b><span>parts total (brackets are printed)</span></div>
     <div><b>camera + mic + speaker</b><span>it sees, hears and speaks</span></div>
     <div><b>0 / 80</b><span>falls under command + shoves (V3)</span></div>
   </div>
@@ -337,6 +337,8 @@ and the robot physically cannot stand.</li>
 <tr><td><a href="https://www.adafruit.com/product/815">PCA9685 16-ch PWM driver</a></td><td>servo control over I2C</td><td class="mono">2</td><td class="mono num">≈$12</td><td>solder A0 on the second board → address 0x41</td></tr>
 <tr><td><a href="https://www.amazon.com/s?k=CD74HC4067">CD74HC4067 16-ch analog mux</a></td><td>reads all 17 servo pots</td><td class="mono">2</td><td class="mono num">≈$9</td><td>the $3 mod that gives the robot true joint sensing</td></tr>
 <tr><td><a href="https://www.amazon.com/s?k=gy-521+mpu6050">MPU-6050 IMU (GY-521)</a></td><td>orientation + angular velocity</td><td class="mono">1</td><td class="mono num">≈$5</td><td>shares the I2C bus with the PCA9685s</td></tr>
+<tr><td><a href="https://www.amazon.com/s?k=vl53l5cx">VL53L5CX multizone ToF</a></td><td>solid-state <b>3D lidar</b></td><td class="mono">1</td><td class="mono num">≈$7</td><td>8×8 depth zones over a ~45° cone, 4 m range, 2 g — head face beside the camera, I2C 0x29 on the shared bus. Replaces the planar ray fan: sees overhangs and toe-catchers the 2D scan was blind to</td></tr>
+<tr><td><a href="https://www.amazon.com/s?k=m2+screw+assortment">M2 screw assortment (6/8/10 mm) + wire</a></td><td>fasteners + harness</td><td class="mono">1 kit</td><td class="mono num">≈$10</td><td>~110 screws ≈35 g and ~30 g of extensions/power harness/plugs — <b>counted in the simulated mass</b> (482 g total); leaving them out is how sim robots break on real floors</td></tr>
 <tr><td><a href="https://www.amazon.com/s?k=2s+500mah+lipo+jst">2S 500 mAh LiPo</a></td><td>power</td><td class="mono">1</td><td class="mono num">≈$12</td><td>40 g — mount FRONT of torso</td></tr>
 <tr><td><a href="https://www.amazon.com/s?k=ubec+5v+3a">5 V 3 A UBEC</a></td><td>servo + logic rail</td><td class="mono">1</td><td class="mono num">≈$9</td><td>never feed servos from the XIAO's regulator</td></tr>
 <tr><td><a href="https://github.com/maxlirio/dummy13-build-guide">Printed bracket + plate set (V3)</a></td><td>the body IS the servos + these</td><td class="mono">1 print run</td><td class="mono num">filament</td><td>≈55 g of PETG: pelvis rails, hip U-plates, L-brackets, thigh/shin side plates, ankle plates, soles. Generated from the audited model (mujoco/_make_v3.py)</td></tr>
