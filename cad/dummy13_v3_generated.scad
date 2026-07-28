@@ -1,736 +1,673 @@
 // GENERATED from dummy13_v3.xml by _export_scad.py — do not hand-edit.
-// Units mm. Each module = one printed plate with computed holes.
+// Units mm. Each module = ONE PRINTED PART (touching same-body plates fused).
 // M2 pilot 1.7 | horn hub 4.8 + arms at +-7 | spline pass 5.5.
 
-module ankleconn_l() {
+// part 'ankledrive_l_part' = ankleconn_l + ankledrive_l
+module ankledrive_l_part() {
   difference() {
-    cube([8.00, 16.00, 2.00], center=true);
+    union() {
+      translate([-2.50,0.00,3.50]) cube([2.00, 16.00, 42.00], center=true);
+      translate([2.50,0.00,-3.50]) cube([8.00, 16.00, 2.00], center=true);
+    }
+    translate([-2.50,0.00,16.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([-2.50,7.00,16.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-2.50,-7.00,16.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
-module ankleconn_r() {
+// part 'ankledrive_r_part' = ankleconn_r + ankledrive_r
+module ankledrive_r_part() {
   difference() {
-    cube([8.00, 16.00, 2.00], center=true);
+    union() {
+      translate([2.50,0.00,3.50]) cube([2.00, 16.00, 42.00], center=true);
+      translate([-2.50,0.00,-3.50]) cube([8.00, 16.00, 2.00], center=true);
+    }
+    translate([2.50,0.00,16.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([2.50,7.00,16.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([2.50,-7.00,16.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
-module ankledrive_l() {
-  difference() {
-    cube([2.00, 16.00, 42.00], center=true);
-    translate([0.00,0.00,13.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,13.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,13.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-module ankledrive_r() {
-  difference() {
-    cube([2.00, 16.00, 42.00], center=true);
-    translate([0.00,0.00,13.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,13.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,13.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
+// part 'apmnt_l_bar1' = apmnt_l_bar1
 module apmnt_l_bar1() {
   difference() {
-    cube([2.00, 12.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 12.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'apmnt_l_bar2' = apmnt_l_bar2
 module apmnt_l_bar2() {
   difference() {
-    cube([2.00, 12.00, 4.20], center=true);
-    translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 12.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'apmnt_r_bar1' = apmnt_r_bar1
 module apmnt_r_bar1() {
   difference() {
-    cube([2.00, 12.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 12.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'apmnt_r_bar2' = apmnt_r_bar2
 module apmnt_r_bar2() {
   difference() {
-    cube([2.00, 12.00, 4.20], center=true);
-    translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 12.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'armnt_l_bar1' = armnt_l_bar1
 module armnt_l_bar1() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'armnt_l_bar2' = armnt_l_bar2
 module armnt_l_bar2() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'armnt_r_bar1' = armnt_r_bar1
 module armnt_r_bar1() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'armnt_r_bar2' = armnt_r_bar2
 module armnt_r_bar2() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module bar_b() {
-  difference() {
-    cube([57.80, 4.00, 8.00], center=true);
-  }
-}
-
-module bar_f() {
-  difference() {
-    cube([57.80, 4.00, 8.00], center=true);
-  }
-}
-
+// part 'elmnt_l_bar1' = elmnt_l_bar1
 module elmnt_l_bar1() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'elmnt_l_bar2' = elmnt_l_bar2
 module elmnt_l_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'elmnt_r_bar1' = elmnt_r_bar1
 module elmnt_r_bar1() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'elmnt_r_bar2' = elmnt_r_bar2
 module elmnt_r_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module foothorn_l() {
-  difference() {
-    cube([8.00, 2.00, 7.80], center=true);
-    translate([0.00,0.00,2.40]) rotate([90,0,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,2.40]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,2.40]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-module foothorn_r() {
-  difference() {
-    cube([8.00, 2.00, 7.80], center=true);
-    translate([0.00,0.00,2.40]) rotate([90,0,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,2.40]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,2.40]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-module footstrut_l() {
-  difference() {
-    cube([16.00, 2.00, 15.60], center=true);
-  }
-}
-
-module footstrut_r() {
-  difference() {
-    cube([16.00, 2.00, 15.60], center=true);
-  }
-}
-
+// part 'foredrive_l' = foredrive_l
 module foredrive_l() {
   difference() {
-    cube([2.00, 12.00, 28.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 12.00, 28.00], center=true);
+    }
+    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
+// part 'foredrive_r' = foredrive_r
 module foredrive_r() {
   difference() {
-    cube([2.00, 12.00, 28.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 12.00, 28.00], center=true);
+    }
+    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
-module hipU_l_0() {
+// part 'hipU_l_0_part' = hipU_l_0 + hipU_l_1 + rollmnt_l_bar1 + yawplate_l
+module hipU_l_0_part() {
   difference() {
-    cube([2.00, 16.00, 32.20], center=true);
+    union() {
+      translate([0.00,7.40,11.30]) cube([14.00, 20.00, 2.00], center=true);
+      translate([0.00,-6.20,0.30]) cube([14.00, 2.00, 4.20], center=true);
+      translate([-8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
+      translate([8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
+    }
+    translate([0.00,7.40,11.30])  cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([7.00,7.40,11.30])  cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-7.00,7.40,11.30])  cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-3.60,0.30]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module hipU_l_1() {
+// part 'hipU_r_0_part' = hipU_r_0 + hipU_r_1 + rollmnt_r_bar1 + yawplate_r
+module hipU_r_0_part() {
   difference() {
-    cube([2.00, 16.00, 32.20], center=true);
+    union() {
+      translate([0.00,7.40,11.30]) cube([14.00, 20.00, 2.00], center=true);
+      translate([0.00,-6.20,0.30]) cube([14.00, 2.00, 4.20], center=true);
+      translate([-8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
+      translate([8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
+    }
+    translate([0.00,7.40,11.30])  cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([7.00,7.40,11.30])  cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-7.00,7.40,11.30])  cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-3.60,0.30]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module hipU_r_0() {
+// part 'hipconn_l_part' = hipconn_l + hpmnt_l_bar1 + rollhornp_l
+module hipconn_l_part() {
   difference() {
-    cube([2.00, 16.00, 32.20], center=true);
+    union() {
+      translate([-2.40,3.13,8.03]) cube([18.00, 2.00, 18.00], center=true);
+      translate([1.20,-1.57,-5.77]) cube([2.00, 16.00, 4.20], center=true);
+      translate([1.20,-1.57,-2.27]) cube([2.00, 16.00, 2.80], center=true);
+    }
+    translate([-2.40,3.13,8.03]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([4.60,3.13,8.03]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-9.40,3.13,8.03]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-1.40,-1.57,-5.77]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module hipU_r_1() {
+// part 'hipconn_r_part' = hipconn_r + hpmnt_r_bar1 + rollhornp_r
+module hipconn_r_part() {
   difference() {
-    cube([2.00, 16.00, 32.20], center=true);
+    union() {
+      translate([2.40,3.13,8.03]) cube([18.00, 2.00, 18.00], center=true);
+      translate([-1.20,-1.57,-5.77]) cube([2.00, 16.00, 4.20], center=true);
+      translate([-1.20,-1.57,-2.27]) cube([2.00, 16.00, 2.80], center=true);
+    }
+    translate([2.40,3.13,8.03]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([9.40,3.13,8.03]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-4.60,3.13,8.03]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([1.40,-1.57,-5.77]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module hipconn_l() {
-  difference() {
-    cube([2.00, 16.00, 2.80], center=true);
-  }
-}
-
-module hipconn_r() {
-  difference() {
-    cube([2.00, 16.00, 2.80], center=true);
-  }
-}
-
-module hpmnt_l_bar1() {
-  difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
-  }
-}
-
+// part 'hpmnt_l_bar2' = hpmnt_l_bar2
 module hpmnt_l_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module hpmnt_r_bar1() {
-  difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
-  }
-}
-
+// part 'hpmnt_r_bar2' = hpmnt_r_bar2
 module hpmnt_r_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module keel() {
+// part 'keel_part' = keel + shell_back + shell_top + spinemnt_bar1
+module keel_part() {
   difference() {
-    cube([10.00, 10.00, 40.00], center=true);
+    union() {
+      translate([1.80,2.32,-36.75]) cube([2.00, 4.20, 16.00], center=true);
+      translate([-0.60,-2.18,-0.75]) cube([40.00, 2.60, 64.00], center=true);
+      translate([-0.60,10.62,30.25]) cube([40.00, 22.60, 2.00], center=true);
+      translate([-0.60,-10.77,7.25]) cube([10.00, 10.00, 40.00], center=true);
+    }
+    translate([4.40,2.42,-36.75]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'knmnt_l_bar1' = knmnt_l_bar1
 module knmnt_l_bar1() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'knmnt_l_bar2' = knmnt_l_bar2
 module knmnt_l_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'knmnt_r_bar1' = knmnt_r_bar1
 module knmnt_r_bar1() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'knmnt_r_bar2' = knmnt_r_bar2
 module knmnt_r_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module rail_l() {
-  difference() {
-    cube([4.40, 32.00, 8.00], center=true);
-  }
-}
-
-module rail_r() {
-  difference() {
-    cube([4.40, 32.00, 8.00], center=true);
-  }
-}
-
+// part 'rollhorn_l' = rollhorn_l
 module rollhorn_l() {
   difference() {
-    cube([16.00, 2.00, 24.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 24.00], center=true);
+    }
+    translate([0.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
+// part 'rollhorn_r' = rollhorn_r
 module rollhorn_r() {
   difference() {
-    cube([16.00, 2.00, 24.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 24.00], center=true);
+    }
+    translate([0.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
-module rollhornp_l() {
-  difference() {
-    cube([18.00, 2.00, 18.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-module rollhornp_r() {
-  difference() {
-    cube([18.00, 2.00, 18.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-module rollmnt_l_bar1() {
-  difference() {
-    cube([14.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
-  }
-}
-
+// part 'rollmnt_l_bar2' = rollmnt_l_bar2
 module rollmnt_l_bar2() {
   difference() {
-    cube([14.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([14.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module rollmnt_r_bar1() {
-  difference() {
-    cube([14.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
-  }
-}
-
+// part 'rollmnt_r_bar2' = rollmnt_r_bar2
 module rollmnt_r_bar2() {
   difference() {
-    cube([14.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([14.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shdrive_l' = shdrive_l
 module shdrive_l() {
   difference() {
-    cube([2.00, 14.00, 24.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 14.00, 24.00], center=true);
+    }
+    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
+// part 'shdrive_r' = shdrive_r
 module shdrive_r() {
   difference() {
-    cube([2.00, 14.00, 24.00], center=true);
-    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 14.00, 24.00], center=true);
+    }
+    translate([0.00,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([0.00,7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
 
-module shell_back() {
+// part 'shell_front_part' = shell_front + spinemnt_bar2
+module shell_front_part() {
   difference() {
-    cube([40.00, 2.60, 64.00], center=true);
+    union() {
+      translate([1.20,-1.70,-18.00]) cube([2.00, 4.20, 16.00], center=true);
+      translate([-1.20,1.70,18.00]) cube([40.00, 2.60, 64.00], center=true);
+    }
+    translate([3.80,-1.80,-18.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module shell_front() {
+// part 'shindrive_l_part' = shindrive_l + shinweb_l
+module shindrive_l_part() {
   difference() {
-    cube([40.00, 2.60, 64.00], center=true);
+    union() {
+      translate([4.50,0.00,5.00]) cube([2.00, 16.00, 76.00], center=true);
+      translate([-4.50,0.00,-5.00]) cube([16.00, 16.00, 2.00], center=true);
+    }
+    translate([4.50,0.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([4.50,7.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([4.50,-7.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([4.50,0.00,-21.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
   }
 }
 
-module shell_top() {
+// part 'shindrive_r_part' = shindrive_r + shinweb_r
+module shindrive_r_part() {
   difference() {
-    cube([40.00, 22.60, 2.00], center=true);
+    union() {
+      translate([-4.50,0.00,5.00]) cube([2.00, 16.00, 76.00], center=true);
+      translate([4.50,0.00,-5.00]) cube([16.00, 16.00, 2.00], center=true);
+    }
+    translate([-4.50,0.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([-4.50,7.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-4.50,-7.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-4.50,0.00,-21.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
   }
 }
 
-module shindrive_l() {
-  difference() {
-    cube([2.00, 16.00, 76.00], center=true);
-    translate([0.00,0.00,26.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,26.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,26.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,0.00,-26.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
-  }
-}
-
-module shindrive_r() {
-  difference() {
-    cube([2.00, 16.00, 76.00], center=true);
-    translate([0.00,0.00,26.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,26.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,26.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,0.00,-26.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
-  }
-}
-
-module shinweb_l() {
-  difference() {
-    cube([16.00, 16.00, 2.00], center=true);
-  }
-}
-
-module shinweb_r() {
-  difference() {
-    cube([16.00, 16.00, 2.00], center=true);
-  }
-}
-
+// part 'shmnt_l_bar1' = shmnt_l_bar1
 module shmnt_l_bar1() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shmnt_l_bar2' = shmnt_l_bar2
 module shmnt_l_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shmnt_r_bar1' = shmnt_r_bar1
 module shmnt_r_bar1() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shmnt_r_bar2' = shmnt_r_bar2
 module shmnt_r_bar2() {
   difference() {
-    cube([2.00, 16.00, 4.20], center=true);
-    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([2.00, 16.00, 4.20], center=true);
+    }
+    translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shrollmnt_l_bar1' = shrollmnt_l_bar1
 module shrollmnt_l_bar1() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.10]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.10]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shrollmnt_l_bar2' = shrollmnt_l_bar2
 module shrollmnt_l_bar2() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shrollmnt_r_bar1' = shrollmnt_r_bar1
 module shrollmnt_r_bar1() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.10]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.10]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
+// part 'shrollmnt_r_bar2' = shrollmnt_r_bar2
 module shrollmnt_r_bar2() {
   difference() {
-    cube([16.00, 2.00, 4.20], center=true);
-    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,0.00,0.00]) cube([16.00, 2.00, 4.20], center=true);
+    }
+    translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module sole_l() {
+// part 'sole_l_part' = foothorn_l + footstrut_l + sole_l
+module sole_l_part() {
   difference() {
-    cube([28.00, 45.00, 3.00], center=true);
-    translate([0.00,-22.00,4.40])  cylinder(h=5.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,-2.77,11.30]) cube([8.00, 2.00, 7.80], center=true);
+      translate([0.00,-0.77,-0.50]) cube([16.00, 2.00, 15.60], center=true);
+      translate([0.00,3.53,-10.80]) cube([28.00, 45.00, 3.00], center=true);
+    }
+    translate([0.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([7.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-7.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-18.47,-6.40])  cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module sole_r() {
+// part 'sole_r_part' = foothorn_r + footstrut_r + sole_r
+module sole_r_part() {
   difference() {
-    cube([28.00, 45.00, 3.00], center=true);
-    translate([0.00,-22.00,4.40])  cylinder(h=5.0, r=0.85, center=true, $fn=16); // M2 into flange
+    union() {
+      translate([0.00,-2.77,11.30]) cube([8.00, 2.00, 7.80], center=true);
+      translate([0.00,-0.77,-0.50]) cube([16.00, 2.00, 15.60], center=true);
+      translate([0.00,3.53,-10.80]) cube([28.00, 45.00, 3.00], center=true);
+    }
+    translate([0.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([7.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-7.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([0.00,-18.47,-6.40])  cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
 
-module spinearm() {
+// part 'spinedrive_part' = bar_b + bar_f + rail_l + rail_r + spinearm + spinedrive + spinedrop
+module spinedrive_part() {
   difference() {
-    cube([13.80, 12.00, 2.00], center=true);
-    translate([-5.10,0.00,0.00])  cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
+    union() {
+      translate([-42.24,-2.57,-7.50]) cube([4.40, 32.00, 8.00], center=true);
+      translate([20.16,-2.57,-7.50]) cube([4.40, 32.00, 8.00], center=true);
+      translate([-11.04,-16.67,-7.50]) cube([57.80, 4.00, 8.00], center=true);
+      translate([-11.04,11.53,-7.50]) cube([57.80, 4.00, 8.00], center=true);
+      translate([8.16,3.43,11.10]) cube([2.00, 12.00, 8.00], center=true);
+      translate([16.06,3.43,14.10]) cube([13.80, 12.00, 2.00], center=true);
+      translate([19.96,3.43,4.80]) cube([2.00, 12.00, 16.60], center=true);
+    }
+    translate([8.16,3.43,9.10]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
+    translate([10.96,3.43,14.10])  cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
+    translate([19.96,3.43,9.10]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
+    translate([19.96,3.43,4.10]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
   }
 }
 
-module spinedrive() {
+// part 'thighdrive_l_part' = thighdrive_l + thighweb_l
+module thighdrive_l_part() {
   difference() {
-    cube([2.00, 12.00, 8.00], center=true);
-    translate([0.00,0.00,-2.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
+    union() {
+      translate([4.50,0.00,3.50]) cube([2.00, 16.00, 82.00], center=true);
+      translate([-4.50,0.00,-3.50]) cube([16.00, 16.00, 2.00], center=true);
+    }
+    translate([4.50,0.00,32.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([4.50,7.00,32.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([4.50,-7.00,32.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([4.50,0.00,-25.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
   }
 }
 
-module spinedrop() {
+// part 'thighdrive_r_part' = thighdrive_r + thighweb_r
+module thighdrive_r_part() {
   difference() {
-    cube([2.00, 12.00, 16.60], center=true);
-    translate([0.00,0.00,4.30]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
-    translate([0.00,0.00,-0.70]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
+    union() {
+      translate([-4.50,0.00,3.50]) cube([2.00, 16.00, 82.00], center=true);
+      translate([4.50,0.00,-3.50]) cube([16.00, 16.00, 2.00], center=true);
+    }
+    translate([-4.50,0.00,32.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
+    translate([-4.50,7.00,32.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-4.50,-7.00,32.50]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
+    translate([-4.50,0.00,-25.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
   }
 }
 
-module spinemnt_bar1() {
-  difference() {
-    cube([2.00, 4.20, 16.00], center=true);
-    translate([2.60,0.10,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
-  }
-}
-
-module spinemnt_bar2() {
-  difference() {
-    cube([2.00, 4.20, 16.00], center=true);
-    translate([2.60,-0.10,0.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16); // M2 into flange
-  }
-}
-
-module thighdrive_l() {
-  difference() {
-    cube([2.00, 16.00, 82.00], center=true);
-    translate([0.00,0.00,29.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,29.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,29.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,0.00,-29.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
-  }
-}
-
-module thighdrive_r() {
-  difference() {
-    cube([2.00, 16.00, 82.00], center=true);
-    translate([0.00,0.00,29.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([0.00,7.00,29.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,-7.00,29.00]) rotate([0,90,0]) cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([0.00,0.00,-29.00]) rotate([0,90,0]) cylinder(h=4.0, r=2.75, center=true, $fn=24); // spline pass
-  }
-}
-
-module thighweb_l() {
-  difference() {
-    cube([16.00, 16.00, 2.00], center=true);
-  }
-}
-
-module thighweb_r() {
-  difference() {
-    cube([16.00, 16.00, 2.00], center=true);
-  }
-}
-
-module yawplate_l() {
-  difference() {
-    cube([14.00, 20.00, 2.00], center=true);
-    translate([0.00,0.00,0.00])  cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,0.00])  cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,0.00])  cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-module yawplate_r() {
-  difference() {
-    cube([14.00, 20.00, 2.00], center=true);
-    translate([0.00,0.00,0.00])  cylinder(h=4.0, r=2.4, center=true, $fn=24); // horn hub
-    translate([7.00,0.00,0.00])  cylinder(h=4.0, r=0.85, center=true, $fn=16);
-    translate([-7.00,0.00,0.00])  cylinder(h=4.0, r=0.85, center=true, $fn=16);
-  }
-}
-
-// ---- print-bed layout: every part, spaced ----
+// ---- print-bed layout ----
 PART = "all";
-if (PART == "all") translate([0, 0, 0]) ankleconn_l();
-if (PART == "ankleconn_l") ankleconn_l();
-if (PART == "all") translate([45, 0, 0]) ankleconn_r();
-if (PART == "ankleconn_r") ankleconn_r();
-if (PART == "all") translate([90, 0, 0]) ankledrive_l();
-if (PART == "ankledrive_l") ankledrive_l();
-if (PART == "all") translate([135, 0, 0]) ankledrive_r();
-if (PART == "ankledrive_r") ankledrive_r();
-if (PART == "all") translate([180, 0, 0]) apmnt_l_bar1();
+if (PART == "all") translate([0, 0, 0]) ankledrive_l_part();
+if (PART == "ankledrive_l_part") ankledrive_l_part();
+if (PART == "all") translate([60, 0, 0]) ankledrive_r_part();
+if (PART == "ankledrive_r_part") ankledrive_r_part();
+if (PART == "all") translate([120, 0, 0]) apmnt_l_bar1();
 if (PART == "apmnt_l_bar1") apmnt_l_bar1();
-if (PART == "all") translate([225, 0, 0]) apmnt_l_bar2();
+if (PART == "all") translate([180, 0, 0]) apmnt_l_bar2();
 if (PART == "apmnt_l_bar2") apmnt_l_bar2();
-if (PART == "all") translate([0, 45, 0]) apmnt_r_bar1();
+if (PART == "all") translate([240, 0, 0]) apmnt_r_bar1();
 if (PART == "apmnt_r_bar1") apmnt_r_bar1();
-if (PART == "all") translate([45, 45, 0]) apmnt_r_bar2();
+if (PART == "all") translate([0, 60, 0]) apmnt_r_bar2();
 if (PART == "apmnt_r_bar2") apmnt_r_bar2();
-if (PART == "all") translate([90, 45, 0]) armnt_l_bar1();
+if (PART == "all") translate([60, 60, 0]) armnt_l_bar1();
 if (PART == "armnt_l_bar1") armnt_l_bar1();
-if (PART == "all") translate([135, 45, 0]) armnt_l_bar2();
+if (PART == "all") translate([120, 60, 0]) armnt_l_bar2();
 if (PART == "armnt_l_bar2") armnt_l_bar2();
-if (PART == "all") translate([180, 45, 0]) armnt_r_bar1();
+if (PART == "all") translate([180, 60, 0]) armnt_r_bar1();
 if (PART == "armnt_r_bar1") armnt_r_bar1();
-if (PART == "all") translate([225, 45, 0]) armnt_r_bar2();
+if (PART == "all") translate([240, 60, 0]) armnt_r_bar2();
 if (PART == "armnt_r_bar2") armnt_r_bar2();
-if (PART == "all") translate([0, 90, 0]) bar_b();
-if (PART == "bar_b") bar_b();
-if (PART == "all") translate([45, 90, 0]) bar_f();
-if (PART == "bar_f") bar_f();
-if (PART == "all") translate([90, 90, 0]) elmnt_l_bar1();
+if (PART == "all") translate([0, 120, 0]) elmnt_l_bar1();
 if (PART == "elmnt_l_bar1") elmnt_l_bar1();
-if (PART == "all") translate([135, 90, 0]) elmnt_l_bar2();
+if (PART == "all") translate([60, 120, 0]) elmnt_l_bar2();
 if (PART == "elmnt_l_bar2") elmnt_l_bar2();
-if (PART == "all") translate([180, 90, 0]) elmnt_r_bar1();
+if (PART == "all") translate([120, 120, 0]) elmnt_r_bar1();
 if (PART == "elmnt_r_bar1") elmnt_r_bar1();
-if (PART == "all") translate([225, 90, 0]) elmnt_r_bar2();
+if (PART == "all") translate([180, 120, 0]) elmnt_r_bar2();
 if (PART == "elmnt_r_bar2") elmnt_r_bar2();
-if (PART == "all") translate([0, 135, 0]) foothorn_l();
-if (PART == "foothorn_l") foothorn_l();
-if (PART == "all") translate([45, 135, 0]) foothorn_r();
-if (PART == "foothorn_r") foothorn_r();
-if (PART == "all") translate([90, 135, 0]) footstrut_l();
-if (PART == "footstrut_l") footstrut_l();
-if (PART == "all") translate([135, 135, 0]) footstrut_r();
-if (PART == "footstrut_r") footstrut_r();
-if (PART == "all") translate([180, 135, 0]) foredrive_l();
+if (PART == "all") translate([240, 120, 0]) foredrive_l();
 if (PART == "foredrive_l") foredrive_l();
-if (PART == "all") translate([225, 135, 0]) foredrive_r();
+if (PART == "all") translate([0, 180, 0]) foredrive_r();
 if (PART == "foredrive_r") foredrive_r();
-if (PART == "all") translate([0, 180, 0]) hipU_l_0();
-if (PART == "hipU_l_0") hipU_l_0();
-if (PART == "all") translate([45, 180, 0]) hipU_l_1();
-if (PART == "hipU_l_1") hipU_l_1();
-if (PART == "all") translate([90, 180, 0]) hipU_r_0();
-if (PART == "hipU_r_0") hipU_r_0();
-if (PART == "all") translate([135, 180, 0]) hipU_r_1();
-if (PART == "hipU_r_1") hipU_r_1();
-if (PART == "all") translate([180, 180, 0]) hipconn_l();
-if (PART == "hipconn_l") hipconn_l();
-if (PART == "all") translate([225, 180, 0]) hipconn_r();
-if (PART == "hipconn_r") hipconn_r();
-if (PART == "all") translate([0, 225, 0]) hpmnt_l_bar1();
-if (PART == "hpmnt_l_bar1") hpmnt_l_bar1();
-if (PART == "all") translate([45, 225, 0]) hpmnt_l_bar2();
+if (PART == "all") translate([60, 180, 0]) hipU_l_0_part();
+if (PART == "hipU_l_0_part") hipU_l_0_part();
+if (PART == "all") translate([120, 180, 0]) hipU_r_0_part();
+if (PART == "hipU_r_0_part") hipU_r_0_part();
+if (PART == "all") translate([180, 180, 0]) hipconn_l_part();
+if (PART == "hipconn_l_part") hipconn_l_part();
+if (PART == "all") translate([240, 180, 0]) hipconn_r_part();
+if (PART == "hipconn_r_part") hipconn_r_part();
+if (PART == "all") translate([0, 240, 0]) hpmnt_l_bar2();
 if (PART == "hpmnt_l_bar2") hpmnt_l_bar2();
-if (PART == "all") translate([90, 225, 0]) hpmnt_r_bar1();
-if (PART == "hpmnt_r_bar1") hpmnt_r_bar1();
-if (PART == "all") translate([135, 225, 0]) hpmnt_r_bar2();
+if (PART == "all") translate([60, 240, 0]) hpmnt_r_bar2();
 if (PART == "hpmnt_r_bar2") hpmnt_r_bar2();
-if (PART == "all") translate([180, 225, 0]) keel();
-if (PART == "keel") keel();
-if (PART == "all") translate([225, 225, 0]) knmnt_l_bar1();
+if (PART == "all") translate([120, 240, 0]) keel_part();
+if (PART == "keel_part") keel_part();
+if (PART == "all") translate([180, 240, 0]) knmnt_l_bar1();
 if (PART == "knmnt_l_bar1") knmnt_l_bar1();
-if (PART == "all") translate([0, 270, 0]) knmnt_l_bar2();
+if (PART == "all") translate([240, 240, 0]) knmnt_l_bar2();
 if (PART == "knmnt_l_bar2") knmnt_l_bar2();
-if (PART == "all") translate([45, 270, 0]) knmnt_r_bar1();
+if (PART == "all") translate([0, 300, 0]) knmnt_r_bar1();
 if (PART == "knmnt_r_bar1") knmnt_r_bar1();
-if (PART == "all") translate([90, 270, 0]) knmnt_r_bar2();
+if (PART == "all") translate([60, 300, 0]) knmnt_r_bar2();
 if (PART == "knmnt_r_bar2") knmnt_r_bar2();
-if (PART == "all") translate([135, 270, 0]) rail_l();
-if (PART == "rail_l") rail_l();
-if (PART == "all") translate([180, 270, 0]) rail_r();
-if (PART == "rail_r") rail_r();
-if (PART == "all") translate([225, 270, 0]) rollhorn_l();
+if (PART == "all") translate([120, 300, 0]) rollhorn_l();
 if (PART == "rollhorn_l") rollhorn_l();
-if (PART == "all") translate([0, 315, 0]) rollhorn_r();
+if (PART == "all") translate([180, 300, 0]) rollhorn_r();
 if (PART == "rollhorn_r") rollhorn_r();
-if (PART == "all") translate([45, 315, 0]) rollhornp_l();
-if (PART == "rollhornp_l") rollhornp_l();
-if (PART == "all") translate([90, 315, 0]) rollhornp_r();
-if (PART == "rollhornp_r") rollhornp_r();
-if (PART == "all") translate([135, 315, 0]) rollmnt_l_bar1();
-if (PART == "rollmnt_l_bar1") rollmnt_l_bar1();
-if (PART == "all") translate([180, 315, 0]) rollmnt_l_bar2();
+if (PART == "all") translate([240, 300, 0]) rollmnt_l_bar2();
 if (PART == "rollmnt_l_bar2") rollmnt_l_bar2();
-if (PART == "all") translate([225, 315, 0]) rollmnt_r_bar1();
-if (PART == "rollmnt_r_bar1") rollmnt_r_bar1();
 if (PART == "all") translate([0, 360, 0]) rollmnt_r_bar2();
 if (PART == "rollmnt_r_bar2") rollmnt_r_bar2();
-if (PART == "all") translate([45, 360, 0]) shdrive_l();
+if (PART == "all") translate([60, 360, 0]) shdrive_l();
 if (PART == "shdrive_l") shdrive_l();
-if (PART == "all") translate([90, 360, 0]) shdrive_r();
+if (PART == "all") translate([120, 360, 0]) shdrive_r();
 if (PART == "shdrive_r") shdrive_r();
-if (PART == "all") translate([135, 360, 0]) shell_back();
-if (PART == "shell_back") shell_back();
-if (PART == "all") translate([180, 360, 0]) shell_front();
-if (PART == "shell_front") shell_front();
-if (PART == "all") translate([225, 360, 0]) shell_top();
-if (PART == "shell_top") shell_top();
-if (PART == "all") translate([0, 405, 0]) shindrive_l();
-if (PART == "shindrive_l") shindrive_l();
-if (PART == "all") translate([45, 405, 0]) shindrive_r();
-if (PART == "shindrive_r") shindrive_r();
-if (PART == "all") translate([90, 405, 0]) shinweb_l();
-if (PART == "shinweb_l") shinweb_l();
-if (PART == "all") translate([135, 405, 0]) shinweb_r();
-if (PART == "shinweb_r") shinweb_r();
-if (PART == "all") translate([180, 405, 0]) shmnt_l_bar1();
+if (PART == "all") translate([180, 360, 0]) shell_front_part();
+if (PART == "shell_front_part") shell_front_part();
+if (PART == "all") translate([240, 360, 0]) shindrive_l_part();
+if (PART == "shindrive_l_part") shindrive_l_part();
+if (PART == "all") translate([0, 420, 0]) shindrive_r_part();
+if (PART == "shindrive_r_part") shindrive_r_part();
+if (PART == "all") translate([60, 420, 0]) shmnt_l_bar1();
 if (PART == "shmnt_l_bar1") shmnt_l_bar1();
-if (PART == "all") translate([225, 405, 0]) shmnt_l_bar2();
+if (PART == "all") translate([120, 420, 0]) shmnt_l_bar2();
 if (PART == "shmnt_l_bar2") shmnt_l_bar2();
-if (PART == "all") translate([0, 450, 0]) shmnt_r_bar1();
+if (PART == "all") translate([180, 420, 0]) shmnt_r_bar1();
 if (PART == "shmnt_r_bar1") shmnt_r_bar1();
-if (PART == "all") translate([45, 450, 0]) shmnt_r_bar2();
+if (PART == "all") translate([240, 420, 0]) shmnt_r_bar2();
 if (PART == "shmnt_r_bar2") shmnt_r_bar2();
-if (PART == "all") translate([90, 450, 0]) shrollmnt_l_bar1();
+if (PART == "all") translate([0, 480, 0]) shrollmnt_l_bar1();
 if (PART == "shrollmnt_l_bar1") shrollmnt_l_bar1();
-if (PART == "all") translate([135, 450, 0]) shrollmnt_l_bar2();
+if (PART == "all") translate([60, 480, 0]) shrollmnt_l_bar2();
 if (PART == "shrollmnt_l_bar2") shrollmnt_l_bar2();
-if (PART == "all") translate([180, 450, 0]) shrollmnt_r_bar1();
+if (PART == "all") translate([120, 480, 0]) shrollmnt_r_bar1();
 if (PART == "shrollmnt_r_bar1") shrollmnt_r_bar1();
-if (PART == "all") translate([225, 450, 0]) shrollmnt_r_bar2();
+if (PART == "all") translate([180, 480, 0]) shrollmnt_r_bar2();
 if (PART == "shrollmnt_r_bar2") shrollmnt_r_bar2();
-if (PART == "all") translate([0, 495, 0]) sole_l();
-if (PART == "sole_l") sole_l();
-if (PART == "all") translate([45, 495, 0]) sole_r();
-if (PART == "sole_r") sole_r();
-if (PART == "all") translate([90, 495, 0]) spinearm();
-if (PART == "spinearm") spinearm();
-if (PART == "all") translate([135, 495, 0]) spinedrive();
-if (PART == "spinedrive") spinedrive();
-if (PART == "all") translate([180, 495, 0]) spinedrop();
-if (PART == "spinedrop") spinedrop();
-if (PART == "all") translate([225, 495, 0]) spinemnt_bar1();
-if (PART == "spinemnt_bar1") spinemnt_bar1();
-if (PART == "all") translate([0, 540, 0]) spinemnt_bar2();
-if (PART == "spinemnt_bar2") spinemnt_bar2();
-if (PART == "all") translate([45, 540, 0]) thighdrive_l();
-if (PART == "thighdrive_l") thighdrive_l();
-if (PART == "all") translate([90, 540, 0]) thighdrive_r();
-if (PART == "thighdrive_r") thighdrive_r();
-if (PART == "all") translate([135, 540, 0]) thighweb_l();
-if (PART == "thighweb_l") thighweb_l();
-if (PART == "all") translate([180, 540, 0]) thighweb_r();
-if (PART == "thighweb_r") thighweb_r();
-if (PART == "all") translate([225, 540, 0]) yawplate_l();
-if (PART == "yawplate_l") yawplate_l();
-if (PART == "all") translate([0, 585, 0]) yawplate_r();
-if (PART == "yawplate_r") yawplate_r();
+if (PART == "all") translate([240, 480, 0]) sole_l_part();
+if (PART == "sole_l_part") sole_l_part();
+if (PART == "all") translate([0, 540, 0]) sole_r_part();
+if (PART == "sole_r_part") sole_r_part();
+if (PART == "all") translate([60, 540, 0]) spinedrive_part();
+if (PART == "spinedrive_part") spinedrive_part();
+if (PART == "all") translate([120, 540, 0]) thighdrive_l_part();
+if (PART == "thighdrive_l_part") thighdrive_l_part();
+if (PART == "all") translate([180, 540, 0]) thighdrive_r_part();
+if (PART == "thighdrive_r_part") thighdrive_r_part();
