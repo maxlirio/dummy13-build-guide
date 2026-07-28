@@ -176,8 +176,8 @@ module foredrive_r() {
 module hipU_l_0_part() {
   difference() {
     union() {
-      translate([0.00,7.40,11.30]) cube([14.00, 20.00, 2.00], center=true);
-      translate([0.00,-6.20,0.30]) cube([14.00, 2.00, 4.20], center=true);
+      translate([0.00,7.40,11.30]) cube([16.00, 20.00, 2.00], center=true);
+      translate([0.00,-6.20,0.30]) cube([16.00, 2.00, 4.20], center=true);
       translate([-8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
       translate([8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
     }
@@ -192,8 +192,8 @@ module hipU_l_0_part() {
 module hipU_r_0_part() {
   difference() {
     union() {
-      translate([0.00,7.40,11.30]) cube([14.00, 20.00, 2.00], center=true);
-      translate([0.00,-6.20,0.30]) cube([14.00, 2.00, 4.20], center=true);
+      translate([0.00,7.40,11.30]) cube([16.00, 20.00, 2.00], center=true);
+      translate([0.00,-6.20,0.30]) cube([16.00, 2.00, 4.20], center=true);
       translate([-8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
       translate([8.20,-0.60,-5.80]) cube([2.00, 16.00, 32.20], center=true);
     }
@@ -258,10 +258,10 @@ module hpmnt_r_bar2() {
 module keel_part() {
   difference() {
     union() {
-      translate([1.80,2.32,-36.75]) cube([2.00, 4.20, 16.00], center=true);
+      translate([1.80,1.38,-36.75]) cube([2.00, 6.10, 16.00], center=true);
       translate([-0.60,-2.18,-0.75]) cube([40.00, 2.60, 64.00], center=true);
-      translate([-0.60,10.62,30.25]) cube([40.00, 22.60, 2.00], center=true);
-      translate([-0.60,-10.77,7.25]) cube([10.00, 10.00, 40.00], center=true);
+      translate([-0.60,10.12,28.85]) cube([40.00, 23.60, 4.80], center=true);
+      translate([-0.60,-9.23,7.25]) cube([10.00, 13.10, 40.00], center=true);
     }
     translate([4.40,2.42,-36.75]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
@@ -391,7 +391,7 @@ module shindrive_l_part() {
   difference() {
     union() {
       translate([4.50,0.00,5.00]) cube([2.00, 16.00, 76.00], center=true);
-      translate([-4.50,0.00,-5.00]) cube([16.00, 16.00, 2.00], center=true);
+      translate([-4.10,0.00,-5.00]) cube([16.80, 16.00, 2.00], center=true);
     }
     translate([4.50,0.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
     translate([4.50,7.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
@@ -405,7 +405,7 @@ module shindrive_r_part() {
   difference() {
     union() {
       translate([-4.50,0.00,5.00]) cube([2.00, 16.00, 76.00], center=true);
-      translate([4.50,0.00,-5.00]) cube([16.00, 16.00, 2.00], center=true);
+      translate([4.10,0.00,-5.00]) cube([16.80, 16.00, 2.00], center=true);
     }
     translate([-4.50,0.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
     translate([-4.50,7.00,31.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
@@ -498,8 +498,8 @@ module shrollmnt_r_bar2() {
 module sole_l_part() {
   difference() {
     union() {
-      translate([0.00,-2.77,11.30]) cube([8.00, 2.00, 7.80], center=true);
-      translate([0.00,-0.77,-0.50]) cube([16.00, 2.00, 15.60], center=true);
+      translate([0.00,-2.77,10.85]) cube([8.00, 2.00, 8.70], center=true);
+      translate([0.00,-0.77,-1.40]) cube([16.00, 2.00, 17.40], center=true);
       translate([0.00,3.53,-10.80]) cube([28.00, 45.00, 3.00], center=true);
     }
     translate([0.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
@@ -513,8 +513,8 @@ module sole_l_part() {
 module sole_r_part() {
   difference() {
     union() {
-      translate([0.00,-2.77,11.30]) cube([8.00, 2.00, 7.80], center=true);
-      translate([0.00,-0.77,-0.50]) cube([16.00, 2.00, 15.60], center=true);
+      translate([0.00,-2.77,10.85]) cube([8.00, 2.00, 8.70], center=true);
+      translate([0.00,-0.77,-1.40]) cube([16.00, 2.00, 17.40], center=true);
       translate([0.00,3.53,-10.80]) cube([28.00, 45.00, 3.00], center=true);
     }
     translate([0.00,-2.77,13.70]) rotate([90,0,0]) cylinder(h=60.0, r=2.4, center=true, $fn=24); // horn hub
@@ -528,13 +528,13 @@ module sole_r_part() {
 module spinedrive_part() {
   difference() {
     union() {
-      translate([-42.24,-2.57,-7.50]) cube([4.40, 32.00, 8.00], center=true);
-      translate([20.16,-2.57,-7.50]) cube([4.40, 32.00, 8.00], center=true);
+      translate([-41.79,-2.57,-7.50]) cube([5.30, 32.00, 8.00], center=true);
+      translate([19.71,-2.57,-7.50]) cube([5.30, 32.00, 8.00], center=true);
       translate([-11.04,-16.67,-7.50]) cube([57.80, 4.00, 8.00], center=true);
       translate([-11.04,11.53,-7.50]) cube([57.80, 4.00, 8.00], center=true);
       translate([8.16,3.43,11.10]) cube([2.00, 12.00, 8.00], center=true);
       translate([16.06,3.43,14.10]) cube([13.80, 12.00, 2.00], center=true);
-      translate([19.96,3.43,4.80]) cube([2.00, 12.00, 16.60], center=true);
+      translate([19.01,3.43,4.40]) cube([3.90, 12.00, 17.40], center=true);
     }
     translate([8.16,3.43,9.10]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
     translate([10.96,3.43,14.10])  cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
