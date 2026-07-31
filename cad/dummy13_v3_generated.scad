@@ -15,6 +15,8 @@ module ankledrive_l_part() {
   }
 }
 
+module ankledrive_l_part_print() { rotate([0,90,0]) ankledrive_l_part(); }
+
 // part 'ankledrive_r_part' = ankleconn_r + ankledrive_r
 module ankledrive_r_part() {
   difference() {
@@ -28,6 +30,8 @@ module ankledrive_r_part() {
   }
 }
 
+module ankledrive_r_part_print() { rotate([0,90,0]) ankledrive_r_part(); }
+
 // part 'apmnt_l_bar1' = apmnt_l_bar1
 module apmnt_l_bar1() {
   difference() {
@@ -37,6 +41,8 @@ module apmnt_l_bar1() {
     translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module apmnt_l_bar1_print() { rotate([0,90,0]) apmnt_l_bar1(); }
 
 // part 'apmnt_l_bar2' = apmnt_l_bar2
 module apmnt_l_bar2() {
@@ -48,6 +54,8 @@ module apmnt_l_bar2() {
   }
 }
 
+module apmnt_l_bar2_print() { rotate([0,90,0]) apmnt_l_bar2(); }
+
 // part 'apmnt_r_bar1' = apmnt_r_bar1
 module apmnt_r_bar1() {
   difference() {
@@ -57,6 +65,8 @@ module apmnt_r_bar1() {
     translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module apmnt_r_bar1_print() { rotate([0,90,0]) apmnt_r_bar1(); }
 
 // part 'apmnt_r_bar2' = apmnt_r_bar2
 module apmnt_r_bar2() {
@@ -68,6 +78,8 @@ module apmnt_r_bar2() {
   }
 }
 
+module apmnt_r_bar2_print() { rotate([0,90,0]) apmnt_r_bar2(); }
+
 // part 'armnt_l_bar1' = armnt_l_bar1
 module armnt_l_bar1() {
   difference() {
@@ -77,6 +89,8 @@ module armnt_l_bar1() {
     translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module armnt_l_bar1_print() { rotate([90,0,0]) armnt_l_bar1(); }
 
 // part 'armnt_l_bar2' = armnt_l_bar2
 module armnt_l_bar2() {
@@ -88,6 +102,8 @@ module armnt_l_bar2() {
   }
 }
 
+module armnt_l_bar2_print() { rotate([90,0,0]) armnt_l_bar2(); }
+
 // part 'armnt_r_bar1' = armnt_r_bar1
 module armnt_r_bar1() {
   difference() {
@@ -97,6 +113,8 @@ module armnt_r_bar1() {
     translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module armnt_r_bar1_print() { rotate([90,0,0]) armnt_r_bar1(); }
 
 // part 'armnt_r_bar2' = armnt_r_bar2
 module armnt_r_bar2() {
@@ -108,6 +126,8 @@ module armnt_r_bar2() {
   }
 }
 
+module armnt_r_bar2_print() { rotate([90,0,0]) armnt_r_bar2(); }
+
 // part 'elmnt_l_bar1' = elmnt_l_bar1
 module elmnt_l_bar1() {
   difference() {
@@ -117,6 +137,8 @@ module elmnt_l_bar1() {
     translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module elmnt_l_bar1_print() { rotate([0,90,0]) elmnt_l_bar1(); }
 
 // part 'elmnt_l_bar2' = elmnt_l_bar2
 module elmnt_l_bar2() {
@@ -128,6 +150,8 @@ module elmnt_l_bar2() {
   }
 }
 
+module elmnt_l_bar2_print() { rotate([0,90,0]) elmnt_l_bar2(); }
+
 // part 'elmnt_r_bar1' = elmnt_r_bar1
 module elmnt_r_bar1() {
   difference() {
@@ -138,6 +162,8 @@ module elmnt_r_bar1() {
   }
 }
 
+module elmnt_r_bar1_print() { rotate([0,90,0]) elmnt_r_bar1(); }
+
 // part 'elmnt_r_bar2' = elmnt_r_bar2
 module elmnt_r_bar2() {
   difference() {
@@ -147,6 +173,8 @@ module elmnt_r_bar2() {
     translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module elmnt_r_bar2_print() { rotate([0,90,0]) elmnt_r_bar2(); }
 
 // part 'foredrive_l' = foredrive_l
 module foredrive_l() {
@@ -160,6 +188,8 @@ module foredrive_l() {
   }
 }
 
+module foredrive_l_print() { rotate([0,90,0]) foredrive_l(); }
+
 // part 'foredrive_r' = foredrive_r
 module foredrive_r() {
   difference() {
@@ -171,6 +201,8 @@ module foredrive_r() {
     translate([0.00,-7.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16);
   }
 }
+
+module foredrive_r_print() { rotate([0,90,0]) foredrive_r(); }
 
 // part 'hipU_l_0_part' = hipU_l_0 + hipU_l_1 + rollmnt_l_bar1 + yawplate_l
 module hipU_l_0_part() {
@@ -188,6 +220,8 @@ module hipU_l_0_part() {
   }
 }
 
+module hipU_l_0_part_print() { rotate([0,90,0]) hipU_l_0_part(); }
+
 // part 'hipU_r_0_part' = hipU_r_0 + hipU_r_1 + rollmnt_r_bar1 + yawplate_r
 module hipU_r_0_part() {
   difference() {
@@ -204,6 +238,8 @@ module hipU_r_0_part() {
   }
 }
 
+module hipU_r_0_part_print() { rotate([0,90,0]) hipU_r_0_part(); }
+
 // part 'hipconn_l_part' = hipconn_l + hpmnt_l_bar1 + rollhornp_l
 module hipconn_l_part() {
   difference() {
@@ -218,6 +254,8 @@ module hipconn_l_part() {
     translate([-1.40,-1.57,-5.77]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module hipconn_l_part_print() { rotate([90,0,0]) hipconn_l_part(); }
 
 // part 'hipconn_r_part' = hipconn_r + hpmnt_r_bar1 + rollhornp_r
 module hipconn_r_part() {
@@ -234,6 +272,8 @@ module hipconn_r_part() {
   }
 }
 
+module hipconn_r_part_print() { rotate([90,0,0]) hipconn_r_part(); }
+
 // part 'hpmnt_l_bar2' = hpmnt_l_bar2
 module hpmnt_l_bar2() {
   difference() {
@@ -244,6 +284,8 @@ module hpmnt_l_bar2() {
   }
 }
 
+module hpmnt_l_bar2_print() { rotate([0,90,0]) hpmnt_l_bar2(); }
+
 // part 'hpmnt_r_bar2' = hpmnt_r_bar2
 module hpmnt_r_bar2() {
   difference() {
@@ -253,6 +295,8 @@ module hpmnt_r_bar2() {
     translate([2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module hpmnt_r_bar2_print() { rotate([0,90,0]) hpmnt_r_bar2(); }
 
 // part 'keel_part' = keel + shell_back + shell_top + spinemnt_bar1
 module keel_part() {
@@ -267,6 +311,8 @@ module keel_part() {
   }
 }
 
+module keel_part_print() { rotate([90,0,0]) keel_part(); }
+
 // part 'knmnt_l_bar1' = knmnt_l_bar1
 module knmnt_l_bar1() {
   difference() {
@@ -276,6 +322,8 @@ module knmnt_l_bar1() {
     translate([-2.60,0.00,0.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module knmnt_l_bar1_print() { rotate([0,90,0]) knmnt_l_bar1(); }
 
 // part 'knmnt_l_bar2' = knmnt_l_bar2
 module knmnt_l_bar2() {
@@ -287,6 +335,8 @@ module knmnt_l_bar2() {
   }
 }
 
+module knmnt_l_bar2_print() { rotate([0,90,0]) knmnt_l_bar2(); }
+
 // part 'knmnt_r_bar1' = knmnt_r_bar1
 module knmnt_r_bar1() {
   difference() {
@@ -297,6 +347,8 @@ module knmnt_r_bar1() {
   }
 }
 
+module knmnt_r_bar1_print() { rotate([0,90,0]) knmnt_r_bar1(); }
+
 // part 'knmnt_r_bar2' = knmnt_r_bar2
 module knmnt_r_bar2() {
   difference() {
@@ -306,6 +358,8 @@ module knmnt_r_bar2() {
     translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module knmnt_r_bar2_print() { rotate([0,90,0]) knmnt_r_bar2(); }
 
 // part 'rollhorn_l' = rollhorn_l
 module rollhorn_l() {
@@ -319,6 +373,8 @@ module rollhorn_l() {
   }
 }
 
+module rollhorn_l_print() { rotate([90,0,0]) rollhorn_l(); }
+
 // part 'rollhorn_r' = rollhorn_r
 module rollhorn_r() {
   difference() {
@@ -331,6 +387,8 @@ module rollhorn_r() {
   }
 }
 
+module rollhorn_r_print() { rotate([90,0,0]) rollhorn_r(); }
+
 // part 'rollmnt_l_bar2' = rollmnt_l_bar2
 module rollmnt_l_bar2() {
   difference() {
@@ -341,6 +399,8 @@ module rollmnt_l_bar2() {
   }
 }
 
+module rollmnt_l_bar2_print() { rotate([90,0,0]) rollmnt_l_bar2(); }
+
 // part 'rollmnt_r_bar2' = rollmnt_r_bar2
 module rollmnt_r_bar2() {
   difference() {
@@ -350,6 +410,8 @@ module rollmnt_r_bar2() {
     translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module rollmnt_r_bar2_print() { rotate([90,0,0]) rollmnt_r_bar2(); }
 
 // part 'shdrive_l' = shdrive_l
 module shdrive_l() {
@@ -363,6 +425,8 @@ module shdrive_l() {
   }
 }
 
+module shdrive_l_print() { rotate([0,90,0]) shdrive_l(); }
+
 // part 'shdrive_r' = shdrive_r
 module shdrive_r() {
   difference() {
@@ -375,6 +439,8 @@ module shdrive_r() {
   }
 }
 
+module shdrive_r_print() { rotate([0,90,0]) shdrive_r(); }
+
 // part 'shell_front_part' = shell_front + spinemnt_bar2
 module shell_front_part() {
   difference() {
@@ -385,6 +451,8 @@ module shell_front_part() {
     translate([3.80,-1.80,-18.00]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module shell_front_part_print() { rotate([90,0,0]) shell_front_part(); }
 
 // part 'shindrive_l_part' = shindrive_l + shinweb_l
 module shindrive_l_part() {
@@ -400,6 +468,8 @@ module shindrive_l_part() {
   }
 }
 
+module shindrive_l_part_print() { rotate([90,0,0]) shindrive_l_part(); }
+
 // part 'shindrive_r_part' = shindrive_r + shinweb_r
 module shindrive_r_part() {
   difference() {
@@ -414,6 +484,8 @@ module shindrive_r_part() {
   }
 }
 
+module shindrive_r_part_print() { rotate([90,0,0]) shindrive_r_part(); }
+
 // part 'shmnt_l_bar1' = shmnt_l_bar1
 module shmnt_l_bar1() {
   difference() {
@@ -423,6 +495,8 @@ module shmnt_l_bar1() {
     translate([-2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module shmnt_l_bar1_print() { rotate([0,90,0]) shmnt_l_bar1(); }
 
 // part 'shmnt_l_bar2' = shmnt_l_bar2
 module shmnt_l_bar2() {
@@ -434,6 +508,8 @@ module shmnt_l_bar2() {
   }
 }
 
+module shmnt_l_bar2_print() { rotate([0,90,0]) shmnt_l_bar2(); }
+
 // part 'shmnt_r_bar1' = shmnt_r_bar1
 module shmnt_r_bar1() {
   difference() {
@@ -443,6 +519,8 @@ module shmnt_r_bar1() {
     translate([2.60,0.00,0.10]) rotate([0,90,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module shmnt_r_bar1_print() { rotate([0,90,0]) shmnt_r_bar1(); }
 
 // part 'shmnt_r_bar2' = shmnt_r_bar2
 module shmnt_r_bar2() {
@@ -454,6 +532,8 @@ module shmnt_r_bar2() {
   }
 }
 
+module shmnt_r_bar2_print() { rotate([0,90,0]) shmnt_r_bar2(); }
+
 // part 'shrollmnt_l_bar1' = shrollmnt_l_bar1
 module shrollmnt_l_bar1() {
   difference() {
@@ -463,6 +543,8 @@ module shrollmnt_l_bar1() {
     translate([0.00,2.60,0.10]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module shrollmnt_l_bar1_print() { rotate([90,0,0]) shrollmnt_l_bar1(); }
 
 // part 'shrollmnt_l_bar2' = shrollmnt_l_bar2
 module shrollmnt_l_bar2() {
@@ -474,6 +556,8 @@ module shrollmnt_l_bar2() {
   }
 }
 
+module shrollmnt_l_bar2_print() { rotate([90,0,0]) shrollmnt_l_bar2(); }
+
 // part 'shrollmnt_r_bar1' = shrollmnt_r_bar1
 module shrollmnt_r_bar1() {
   difference() {
@@ -484,6 +568,8 @@ module shrollmnt_r_bar1() {
   }
 }
 
+module shrollmnt_r_bar1_print() { rotate([90,0,0]) shrollmnt_r_bar1(); }
+
 // part 'shrollmnt_r_bar2' = shrollmnt_r_bar2
 module shrollmnt_r_bar2() {
   difference() {
@@ -493,6 +579,8 @@ module shrollmnt_r_bar2() {
     translate([0.00,2.60,0.00]) rotate([90,0,0]) cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module shrollmnt_r_bar2_print() { rotate([90,0,0]) shrollmnt_r_bar2(); }
 
 // part 'sole_l_part' = foothorn_l + footstrut_l + sole_l
 module sole_l_part() {
@@ -509,6 +597,8 @@ module sole_l_part() {
   }
 }
 
+module sole_l_part_print() {  sole_l_part(); }
+
 // part 'sole_r_part' = foothorn_r + footstrut_r + sole_r
 module sole_r_part() {
   difference() {
@@ -523,6 +613,8 @@ module sole_r_part() {
     translate([0.00,-18.47,-6.40])  cylinder(h=60.0, r=0.85, center=true, $fn=16); // M2 into flange
   }
 }
+
+module sole_r_part_print() {  sole_r_part(); }
 
 // part 'spinedrive_part' = bar_b + bar_f + rail_l + rail_r + spinearm + spinedrive + spinedrop
 module spinedrive_part() {
@@ -543,6 +635,8 @@ module spinedrive_part() {
   }
 }
 
+module spinedrive_part_print() {  spinedrive_part(); }
+
 // part 'thighdrive_l_part' = thighdrive_l + thighweb_l
 module thighdrive_l_part() {
   difference() {
@@ -556,6 +650,8 @@ module thighdrive_l_part() {
     translate([4.50,0.00,-25.50]) rotate([0,90,0]) cylinder(h=60.0, r=2.75, center=true, $fn=24); // spline pass
   }
 }
+
+module thighdrive_l_part_print() { rotate([90,0,0]) thighdrive_l_part(); }
 
 // part 'thighdrive_r_part' = thighdrive_r + thighweb_r
 module thighdrive_r_part() {
@@ -571,103 +667,105 @@ module thighdrive_r_part() {
   }
 }
 
+module thighdrive_r_part_print() { rotate([90,0,0]) thighdrive_r_part(); }
+
 // ---- print-bed layout ----
 PART = "all";
 if (PART == "all") translate([0, 0, 0]) ankledrive_l_part();
-if (PART == "ankledrive_l_part") ankledrive_l_part();
+if (PART == "ankledrive_l_part") ankledrive_l_part_print();
 if (PART == "all") translate([60, 0, 0]) ankledrive_r_part();
-if (PART == "ankledrive_r_part") ankledrive_r_part();
+if (PART == "ankledrive_r_part") ankledrive_r_part_print();
 if (PART == "all") translate([120, 0, 0]) apmnt_l_bar1();
-if (PART == "apmnt_l_bar1") apmnt_l_bar1();
+if (PART == "apmnt_l_bar1") apmnt_l_bar1_print();
 if (PART == "all") translate([180, 0, 0]) apmnt_l_bar2();
-if (PART == "apmnt_l_bar2") apmnt_l_bar2();
+if (PART == "apmnt_l_bar2") apmnt_l_bar2_print();
 if (PART == "all") translate([240, 0, 0]) apmnt_r_bar1();
-if (PART == "apmnt_r_bar1") apmnt_r_bar1();
+if (PART == "apmnt_r_bar1") apmnt_r_bar1_print();
 if (PART == "all") translate([0, 60, 0]) apmnt_r_bar2();
-if (PART == "apmnt_r_bar2") apmnt_r_bar2();
+if (PART == "apmnt_r_bar2") apmnt_r_bar2_print();
 if (PART == "all") translate([60, 60, 0]) armnt_l_bar1();
-if (PART == "armnt_l_bar1") armnt_l_bar1();
+if (PART == "armnt_l_bar1") armnt_l_bar1_print();
 if (PART == "all") translate([120, 60, 0]) armnt_l_bar2();
-if (PART == "armnt_l_bar2") armnt_l_bar2();
+if (PART == "armnt_l_bar2") armnt_l_bar2_print();
 if (PART == "all") translate([180, 60, 0]) armnt_r_bar1();
-if (PART == "armnt_r_bar1") armnt_r_bar1();
+if (PART == "armnt_r_bar1") armnt_r_bar1_print();
 if (PART == "all") translate([240, 60, 0]) armnt_r_bar2();
-if (PART == "armnt_r_bar2") armnt_r_bar2();
+if (PART == "armnt_r_bar2") armnt_r_bar2_print();
 if (PART == "all") translate([0, 120, 0]) elmnt_l_bar1();
-if (PART == "elmnt_l_bar1") elmnt_l_bar1();
+if (PART == "elmnt_l_bar1") elmnt_l_bar1_print();
 if (PART == "all") translate([60, 120, 0]) elmnt_l_bar2();
-if (PART == "elmnt_l_bar2") elmnt_l_bar2();
+if (PART == "elmnt_l_bar2") elmnt_l_bar2_print();
 if (PART == "all") translate([120, 120, 0]) elmnt_r_bar1();
-if (PART == "elmnt_r_bar1") elmnt_r_bar1();
+if (PART == "elmnt_r_bar1") elmnt_r_bar1_print();
 if (PART == "all") translate([180, 120, 0]) elmnt_r_bar2();
-if (PART == "elmnt_r_bar2") elmnt_r_bar2();
+if (PART == "elmnt_r_bar2") elmnt_r_bar2_print();
 if (PART == "all") translate([240, 120, 0]) foredrive_l();
-if (PART == "foredrive_l") foredrive_l();
+if (PART == "foredrive_l") foredrive_l_print();
 if (PART == "all") translate([0, 180, 0]) foredrive_r();
-if (PART == "foredrive_r") foredrive_r();
+if (PART == "foredrive_r") foredrive_r_print();
 if (PART == "all") translate([60, 180, 0]) hipU_l_0_part();
-if (PART == "hipU_l_0_part") hipU_l_0_part();
+if (PART == "hipU_l_0_part") hipU_l_0_part_print();
 if (PART == "all") translate([120, 180, 0]) hipU_r_0_part();
-if (PART == "hipU_r_0_part") hipU_r_0_part();
+if (PART == "hipU_r_0_part") hipU_r_0_part_print();
 if (PART == "all") translate([180, 180, 0]) hipconn_l_part();
-if (PART == "hipconn_l_part") hipconn_l_part();
+if (PART == "hipconn_l_part") hipconn_l_part_print();
 if (PART == "all") translate([240, 180, 0]) hipconn_r_part();
-if (PART == "hipconn_r_part") hipconn_r_part();
+if (PART == "hipconn_r_part") hipconn_r_part_print();
 if (PART == "all") translate([0, 240, 0]) hpmnt_l_bar2();
-if (PART == "hpmnt_l_bar2") hpmnt_l_bar2();
+if (PART == "hpmnt_l_bar2") hpmnt_l_bar2_print();
 if (PART == "all") translate([60, 240, 0]) hpmnt_r_bar2();
-if (PART == "hpmnt_r_bar2") hpmnt_r_bar2();
+if (PART == "hpmnt_r_bar2") hpmnt_r_bar2_print();
 if (PART == "all") translate([120, 240, 0]) keel_part();
-if (PART == "keel_part") keel_part();
+if (PART == "keel_part") keel_part_print();
 if (PART == "all") translate([180, 240, 0]) knmnt_l_bar1();
-if (PART == "knmnt_l_bar1") knmnt_l_bar1();
+if (PART == "knmnt_l_bar1") knmnt_l_bar1_print();
 if (PART == "all") translate([240, 240, 0]) knmnt_l_bar2();
-if (PART == "knmnt_l_bar2") knmnt_l_bar2();
+if (PART == "knmnt_l_bar2") knmnt_l_bar2_print();
 if (PART == "all") translate([0, 300, 0]) knmnt_r_bar1();
-if (PART == "knmnt_r_bar1") knmnt_r_bar1();
+if (PART == "knmnt_r_bar1") knmnt_r_bar1_print();
 if (PART == "all") translate([60, 300, 0]) knmnt_r_bar2();
-if (PART == "knmnt_r_bar2") knmnt_r_bar2();
+if (PART == "knmnt_r_bar2") knmnt_r_bar2_print();
 if (PART == "all") translate([120, 300, 0]) rollhorn_l();
-if (PART == "rollhorn_l") rollhorn_l();
+if (PART == "rollhorn_l") rollhorn_l_print();
 if (PART == "all") translate([180, 300, 0]) rollhorn_r();
-if (PART == "rollhorn_r") rollhorn_r();
+if (PART == "rollhorn_r") rollhorn_r_print();
 if (PART == "all") translate([240, 300, 0]) rollmnt_l_bar2();
-if (PART == "rollmnt_l_bar2") rollmnt_l_bar2();
+if (PART == "rollmnt_l_bar2") rollmnt_l_bar2_print();
 if (PART == "all") translate([0, 360, 0]) rollmnt_r_bar2();
-if (PART == "rollmnt_r_bar2") rollmnt_r_bar2();
+if (PART == "rollmnt_r_bar2") rollmnt_r_bar2_print();
 if (PART == "all") translate([60, 360, 0]) shdrive_l();
-if (PART == "shdrive_l") shdrive_l();
+if (PART == "shdrive_l") shdrive_l_print();
 if (PART == "all") translate([120, 360, 0]) shdrive_r();
-if (PART == "shdrive_r") shdrive_r();
+if (PART == "shdrive_r") shdrive_r_print();
 if (PART == "all") translate([180, 360, 0]) shell_front_part();
-if (PART == "shell_front_part") shell_front_part();
+if (PART == "shell_front_part") shell_front_part_print();
 if (PART == "all") translate([240, 360, 0]) shindrive_l_part();
-if (PART == "shindrive_l_part") shindrive_l_part();
+if (PART == "shindrive_l_part") shindrive_l_part_print();
 if (PART == "all") translate([0, 420, 0]) shindrive_r_part();
-if (PART == "shindrive_r_part") shindrive_r_part();
+if (PART == "shindrive_r_part") shindrive_r_part_print();
 if (PART == "all") translate([60, 420, 0]) shmnt_l_bar1();
-if (PART == "shmnt_l_bar1") shmnt_l_bar1();
+if (PART == "shmnt_l_bar1") shmnt_l_bar1_print();
 if (PART == "all") translate([120, 420, 0]) shmnt_l_bar2();
-if (PART == "shmnt_l_bar2") shmnt_l_bar2();
+if (PART == "shmnt_l_bar2") shmnt_l_bar2_print();
 if (PART == "all") translate([180, 420, 0]) shmnt_r_bar1();
-if (PART == "shmnt_r_bar1") shmnt_r_bar1();
+if (PART == "shmnt_r_bar1") shmnt_r_bar1_print();
 if (PART == "all") translate([240, 420, 0]) shmnt_r_bar2();
-if (PART == "shmnt_r_bar2") shmnt_r_bar2();
+if (PART == "shmnt_r_bar2") shmnt_r_bar2_print();
 if (PART == "all") translate([0, 480, 0]) shrollmnt_l_bar1();
-if (PART == "shrollmnt_l_bar1") shrollmnt_l_bar1();
+if (PART == "shrollmnt_l_bar1") shrollmnt_l_bar1_print();
 if (PART == "all") translate([60, 480, 0]) shrollmnt_l_bar2();
-if (PART == "shrollmnt_l_bar2") shrollmnt_l_bar2();
+if (PART == "shrollmnt_l_bar2") shrollmnt_l_bar2_print();
 if (PART == "all") translate([120, 480, 0]) shrollmnt_r_bar1();
-if (PART == "shrollmnt_r_bar1") shrollmnt_r_bar1();
+if (PART == "shrollmnt_r_bar1") shrollmnt_r_bar1_print();
 if (PART == "all") translate([180, 480, 0]) shrollmnt_r_bar2();
-if (PART == "shrollmnt_r_bar2") shrollmnt_r_bar2();
+if (PART == "shrollmnt_r_bar2") shrollmnt_r_bar2_print();
 if (PART == "all") translate([240, 480, 0]) sole_l_part();
-if (PART == "sole_l_part") sole_l_part();
+if (PART == "sole_l_part") sole_l_part_print();
 if (PART == "all") translate([0, 540, 0]) sole_r_part();
-if (PART == "sole_r_part") sole_r_part();
+if (PART == "sole_r_part") sole_r_part_print();
 if (PART == "all") translate([60, 540, 0]) spinedrive_part();
-if (PART == "spinedrive_part") spinedrive_part();
+if (PART == "spinedrive_part") spinedrive_part_print();
 if (PART == "all") translate([120, 540, 0]) thighdrive_l_part();
-if (PART == "thighdrive_l_part") thighdrive_l_part();
+if (PART == "thighdrive_l_part") thighdrive_l_part_print();
 if (PART == "all") translate([180, 540, 0]) thighdrive_r_part();
-if (PART == "thighdrive_r_part") thighdrive_r_part();
+if (PART == "thighdrive_r_part") thighdrive_r_part_print();

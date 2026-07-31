@@ -18,8 +18,17 @@ else changes.
 1. ~~Obs-fidelity fine-tune~~ **GREEN (2026-07-28)**: `omni_pot_A` evaluated under
    the COMPLETE hardware obs model (pot positions + noise + nominal z + zeroed root
    lin-vel = exactly `buildObs()`): mean |err| 0.086, 0/60 falls, style intact
-   (jerk 0.587, head 3.75). This policy IS the one baked into `policy_walk.h`
-   (re-exported, C-verified 1.5e-6, recompiled 41% flash).
+   (jerk 0.587, head 3.75).
+   **Superseded (2026-07-30) by `omni_blsh_A`** — same recipe + per-episode
+   randomized MG90S gear backlash U[0, 2.5°] (`V2_BACKLASH=2.5r`, `_night31.sh`),
+   after a zero-shot sweep showed right-arc falls inside the command envelope at
+   ≥1.5° of gear play. Battery vs pot_A at 0/1.5/2.5° fixed slop: err
+   .088/.099/.107 vs .089/.108/.119, falls 0/120 vs 1/120, clearance parity,
+   style intact (jerk 0.594, head 3.88, armcorr +0.55). This policy IS the one
+   baked into `policy_walk.h` (re-exported, C-verified 1.2e-6, recompiled 43%
+   flash). Practical corollary for the bench: keep total joint slop under ~1°
+   (snug screws, fresh servos) and test turns BOTH ways — right turns degrade
+   first as gears wear.
 2. ~~Compile verification~~ **GREEN**: compiles for XIAO_ESP32S3 at 41% flash /
    16% RAM (the "prototypes: line too long" note is a benign ctags quirk of the
    1.5 MB weight arrays).

@@ -35,6 +35,8 @@
 #include "config_robot.h"     // sim-exported: Q_STAND/Q_LO/Q_HI/PWM_CHAN/ACT_SCALE/SLEW
 #include "policy_walk.h"      // sim-exported: verified C forward
 #include "wifi_secrets.h"     // #define WIFI_SSID / WIFI_PASS (user-created)
+#include "esp_camera.h"        // OV2640 on the XIAO ESP32S3 Sense
+#include "camera_pins.h"       // Sense expansion-board pin map
 
 // ---------------- hardware ----------------
 Adafruit_PWMServoDriver pca0(0x40), pca1(0x41);
@@ -44,7 +46,10 @@ WebServer httpd(80);
 Preferences prefs;
 
 // CD74HC4067 muxes: shared select pins, two analog inputs (see build guide wiring)
-static const int MUX_S[4] = {2, 3, 4, 5};       // GPIO select lines (shared)
+static const int MUX_S[4] = {3, 4, 7, 8};       // select lines D2/D3/D8/D9 (shared)
+// NOT 2/3/4/5: GPIO2 IS A1 (mux1's ADC out) and GPIO5 IS I2C SDA on the
+// XIAO ESP32S3 — the old map shorted the selects into both. A0/A1 are ADC1,
+// so pot reads stay WiFi-safe.
 static const int MUX_A[2] = {A0, A1};           // mux0 -> joints 0-15, mux1 -> 16-18
 static const int MPU_ADDR = 0x68;
 
@@ -280,6 +285,27 @@ static void calSave() {
   prefs.end();
 }
 
+bool camReady = false;
+bool camInit() {
+  camera_config_t c = {};
+  c.ledc_channel = LEDC_CHANNEL_0; c.ledc_timer = LEDC_TIMER_0;
+  c.pin_d0 = Y2_GPIO_NUM;  c.pin_d1 = Y3_GPIO_NUM;  c.pin_d2 = Y4_GPIO_NUM;
+  c.pin_d3 = Y5_GPIO_NUM;  c.pin_d4 = Y6_GPIO_NUM;  c.pin_d5 = Y7_GPIO_NUM;
+  c.pin_d6 = Y8_GPIO_NUM;  c.pin_d7 = Y9_GPIO_NUM;
+  c.pin_xclk = XCLK_GPIO_NUM; c.pin_pclk = PCLK_GPIO_NUM; c.pin_vsync = VSYNC_GPIO_NUM;
+  c.pin_href = HREF_GPIO_NUM; c.pin_sccb_sda = SIOD_GPIO_NUM; c.pin_sccb_scl = SIOC_GPIO_NUM;
+  c.pin_pwdn = PWDN_GPIO_NUM; c.pin_reset = RESET_GPIO_NUM;
+  c.xclk_freq_hz = 20000000;
+  c.pixel_format = PIXFORMAT_JPEG;
+  c.frame_size = FRAMESIZE_VGA;              // 640x480, contract default
+  c.jpeg_quality = 12;
+  c.fb_count = 2;
+  c.fb_location = CAMERA_FB_IN_PSRAM;
+  c.grab_mode = CAMERA_GRAB_LATEST;          // /frame.jpg = freshest, never blocks
+  camReady = (esp_camera_init(&c) == ESP_OK);
+  return camReady;
+}
+
 void setup() {
   Wire.begin();
   pca0.begin(); pca0.setPWMFreq(50);
@@ -296,6 +322,19 @@ void setup() {
   calLoad();                                   // persisted calibration overrides defaults
   MDNS.begin("dummy13");                       // -> http://dummy13.local
   httpd.on("/", []() { httpd.send_P(200, "text/html", CAL_PAGE); });
+  // PROTOCOL.md section 3: freshest headcam JPEG for host-side detection.
+  // Camera inits lazily on first request so a broken/absent sensor can never
+  // stall the control loop at boot.
+  httpd.on("/frame.jpg", []() {
+    if (!camReady && !camInit()) { httpd.send(503, "text/plain", "no camera"); return; }
+    camera_fb_t* fb = esp_camera_fb_get();
+    if (!fb) { httpd.send(503, "text/plain", "capture failed"); return; }
+    httpd.sendHeader("X-Frame-TS", String(millis()));
+    httpd.setContentLength(fb->len);
+    httpd.send(200, "image/jpeg", "");
+    httpd.sendContent((const char*)fb->buf, fb->len);
+    esp_camera_fb_return(fb);
+  });
   httpd.begin();
   wsScan.begin();
   wsCmd.begin();

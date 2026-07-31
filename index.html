@@ -131,8 +131,9 @@ file the robot's firmware is compiled from</b> — it cannot be out of date.</p>
 <p><b>Power tree:</b> battery → UBEC → both PCA9685 V+ rails and the servo mux boards.
 The XIAO powers from its own USB while bench-testing, from the UBEC 5V when walking.</p>
 <p><b>Pot sensing:</b> each servo's middle pot pin (the tap wire you added if doing the
-sensing mod) → mux inputs in the SAME channel order as the table. Mux selects on GPIO
-2/3/4/5, outputs on A0 (mux 0) and A1 (mux 1).</p><div class="step"><label><input type="checkbox" class="ck"><span class="t">7.1 — Plug all 19, then zip it</span></label><p>
+sensing mod) → mux inputs in the SAME channel order as the table. Mux selects on pins D2/D3/D8/D9 (GPIO 3/4/7/8), outputs on A0 (mux 0) and A1
+(mux 1). DON'T use D1/GPIO2 or D4/GPIO5 as selects — GPIO2 <i>is</i> A1 and
+GPIO5 <i>is</i> the I2C SDA you wired in Step above; they're taken.</p><div class="step"><label><input type="checkbox" class="ck"><span class="t">7.1 — Plug all 19, then zip it</span></label><p>
 Work down the table row by row. After plugging, dress the harness: one zip tie per bundle,
 nothing crossing a joint's travel.</p><div class="dont">🚫 <b>DON'T:</b> 'Close enough' channel assignments make the robot dance like a broken marionette on first power. The table is law.</div><div class="check">✅ <b>CHECK before moving on:</b> Row-by-row recount: 19 plugs, every one in the channel the table says. (Yes, actually recount.)</div></div></section><section id="ch8"><h2>Chapter 8 · Flash the firmware</h2><div class="step"><label><input type="checkbox" class="ck"><span class="t">8.1 — Install the tools</span></label><p>
 Install <a href="https://www.arduino.cc/en/software">Arduino IDE</a>, add the ESP32 boards
